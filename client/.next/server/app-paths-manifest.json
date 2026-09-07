@@ -1,0 +1,18 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/account/page": "app/account/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/claims/route": "app/api/claims/route.js",
+  "/api/upload/signed-url/route": "app/api/upload/signed-url/route.js",
+  "/api/warranty/[serial]/route": "app/api/warranty/[serial]/route.js",
+  "/claim-submitted/page": "app/claim-submitted/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/service/page": "app/service/page.js",
+  "/warranty-claim/page": "app/warranty-claim/page.js",
+  "/warranty-expired/page": "app/warranty-expired/page.js",
+  "/warranty-result/[serial]/page": "app/warranty-result/[serial]/page.js",
+  "/warranty/page": "app/warranty/page.js"
+}

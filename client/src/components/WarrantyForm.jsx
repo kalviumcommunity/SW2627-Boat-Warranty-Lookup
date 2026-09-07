@@ -1,125 +1,77 @@
+"use client";
+
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-function WarrantyForm({ onResult }) {
-  const [serialNumber, setSerialNumber] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+export default function WarrantyForm() {
+  const router = useRouter();
 
-  const handleChange = (e) => {
-    const value = e.target.value;
+  const [serial, setSerial] =
+    useState("");
 
-    // Allow only letters and numbers
-    if (!/^[a-zA-Z0-9]*$/.test(value)) {
-      setError("Serial number can contain only letters and numbers.");
-      return;
-    }
+  const [error, setError] =
+    useState("");
 
-    // Do not allow more than 11 characters
-    if (value.length > 11) {
-      return;
-    }
+  function handleChange(e) {
+    const value = e.target.value
+      .toUpperCase()
+      .replace(/[^A-Z0-9]/g, "")
+      .slice(0, 11);
 
-    setSerialNumber(value);
+    setSerial(value);
     setError("");
+  }
 
-    // Clear old result when user changes the serial number
-    if (onResult) {
-      onResult(null);
-    }
-  };
-
-  const handleSubmit = async (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
 
-    const serial = serialNumber.trim();
-
-    // 1. Empty validation
-    if (!serial) {
-      setError("Please enter your serial number.");
-      onResult(null);
-      return;
-    }
-
-    // 2. Alphanumeric validation
-    if (!/^[a-zA-Z0-9]+$/.test(serial)) {
-      setError("Serial number can contain only letters and numbers.");
-      onResult(null);
-      return;
-    }
-
-    // 3. Exactly 11 characters
-    if (serial.length !== 11) {
-      setError("Serial number must be exactly 11 characters long.");
-      onResult(null);
-      return;
-    }
-
-    setError("");
-    setLoading(true);
-
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/products/${encodeURIComponent(serial)}`
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          data.message || "Product warranty information not found."
-        );
-      }
-
-      onResult(data.product);
-    } catch (error) {
-      onResult(null);
+    if (!/^[A-Z0-9]{11}$/.test(serial)) {
       setError(
-        error.message || "Something went wrong. Please try again."
+        "Serial number must contain exactly 11 letters and numbers."
       );
-    } finally {
-      setLoading(false);
+      return;
     }
-  };
+
+    router.push(
+      `/warranty-result/${serial}`
+    );
+  }
 
   return (
-    <div className="warranty-form">
-      <p className="section-label">WARRANTY LOOKUP</p>
+    <form
+      className="warranty-form"
+      onSubmit={handleSubmit}
+    >
 
-      <h2>Check your warranty</h2>
+      <label>
+        Serial Number
+      </label>
 
-      <p>
-        Enter your 11-character serial number to check your product warranty
-        information.
+      <input
+        type="text"
+        value={serial}
+        onChange={handleChange}
+        placeholder="BOAT1234ABC"
+        maxLength={11}
+      />
+
+      <p className="character-count">
+        {serial.length}/11
       </p>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          id="serial"
-          type="text"
-          placeholder="Enter 11-character serial number"
-          value={serialNumber}
-          onChange={handleChange}
-          maxLength={11}
-          autoComplete="off"
-          disabled={loading}
-        />
-
-        <button type="submit" disabled={loading}>
-          {loading ? "Checking..." : "Check Warranty"}
-        </button>
-      </form>
-
-      <div className="serial-info">
-        {serialNumber.length}/11 characters
-      </div>
-
       {error && (
-        <p className="error-message" role="alert">
+        <p className="error-message">
           {error}
         </p>
       )}
-    </div>
+
+      <button
+        type="submit"
+        className="button"
+      >
+        Check Warranty →
+      </button>
+
+    </form>
   );
 }
-
-export default WarrantyForm;

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Harshit/SW2627-MERN-Boat-Warranty-Lookup/client/node_modules/next/navigation.js"],"sourcesContent":["module.exports = require('./dist/client/components/navigation')\n"],"names":["module","exports"],"mappings":"AAAAA,OAAOC,OAAO","ignoreList":[0]}},
+    {"offset": {"line": 8, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Harshit/SW2627-MERN-Boat-Warranty-Lookup/client/src/components/ClaimForm.jsx"],"sourcesContent":["\"use client\";\r\n\r\nimport { useState } from \"react\";\r\nimport { useRouter } from \"next/navigation\";\r\n\r\nfunction ClaimForm() {\r\n  // your code here\r\n\r\n  return (\r\n    <form>\r\n      {/* your form */}\r\n    </form>\r\n  );\r\n}\r\n\r\nexport default ClaimForm;"],"names":["ClaimForm"],"mappings":";;;;;AAEA;AACA;AAHA;;;;AAKA,SAASA;IACP,iBAAiB;IAEjB,qBACE,uMAAC;;;;;AAIL;KARSA;uCAUMA"}}]
+}

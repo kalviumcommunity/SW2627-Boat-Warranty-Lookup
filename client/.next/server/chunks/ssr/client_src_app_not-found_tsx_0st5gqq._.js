@@ -1,0 +1,3 @@
+module.exports=[61619,a=>{"use strict";var b=a.i(39100),c=a.i(44791);a.s(["default",0,function(){return(0,b.jsxs)("div",{className:"page center",children:[(0,b.jsx)("h1",{children:"Page Not Found"}),(0,b.jsx)("p",{className:"muted",children:"The page you are looking for does not exist."}),(0,b.jsx)(c.default,{href:"/",className:"button",children:"Go Home"})]})}])},5526,function(a){a.n(a.i(61619))}];
+
+//# sourceMappingURL=client_src_app_not-found_tsx_0st5gqq._.js.map

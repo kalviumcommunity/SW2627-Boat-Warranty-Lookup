@@ -1,0 +1,3 @@
+module.exports=[74563,a=>{"use strict";a.s(["default",()=>b]);let b=(0,a.i(70225).registerClientReference)(function(){throw Error("Attempted to call the default export of [project]/client/src/app/error.tsx from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"[project]/client/src/app/error.tsx","default")},11956,a=>{"use strict";var b=a.i(74563);a.n(b)},17651,function(a){a.n(a.i(11956))}];
+
+//# sourceMappingURL=client_src_app_error_tsx_0vaxvto._.js.map
