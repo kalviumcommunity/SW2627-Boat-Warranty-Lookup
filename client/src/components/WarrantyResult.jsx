@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import WarrantyCountdown from "./WarrantyCountdown";
 
 export default function WarrantyResult({ result }) {
   if (!result) {
@@ -66,6 +67,11 @@ export default function WarrantyResult({ result }) {
           <strong>Standard Warranty</strong>
         </div>
       </div>
+
+      <WarrantyCountdown
+        purchaseDate={product.purchaseDate}
+        expiryDate={product.warrantyExpiry}
+      />
 
       <div className="warranty-actions">
         {isActive ? (
