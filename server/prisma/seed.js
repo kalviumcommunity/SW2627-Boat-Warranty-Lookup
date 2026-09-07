@@ -1,32 +1,49 @@
-const bcrypt = require("bcryptjs");
+require("dotenv").config();
 
+const bcrypt = require("bcryptjs");
 const prisma = require("../src/config/prisma");
 
-async function main() {
-  const password = await bcrypt.hash("admin123", 10);
+const main = async () => {
+  const adminPassword =
+    process.env.ADMIN_SEED_PASSWORD;
 
-  await prisma.user.upsert({
-    where: {
-      email: "admin@boatwarranty.com",
-    },
-    update: {
-      role: "admin",
-      password,
-    },
-    create: {
-      name: "Admin",
-      email: "admin@boatwarranty.com",
-      password,
-      role: "admin",
-    },
-  });
+  if (!adminPassword) {
+    throw new Error(
+      "ADMIN_SEED_PASSWORD is not configured"
+    );
+  }
 
-  console.log("Admin user ready");
-}
+  const hashedPassword =
+    await bcrypt.hash(adminPassword, 10);
+
+  const admin =
+    await prisma.user.upsert({
+      where: {
+        email: "admin@boatwarranty.com",
+      },
+      update: {
+        password: hashedPassword,
+        role: "admin",
+      },
+      create: {
+        name: "Boat Warranty Admin",
+        email: "admin@boatwarranty.com",
+        password: hashedPassword,
+        role: "admin",
+      },
+    });
+
+  console.log(
+    `Admin user ready: ${admin.email}`
+  );
+};
 
 main()
   .catch((error) => {
-    console.error(error);
+    console.error(
+      "Seed error:",
+      error
+    );
     process.exit(1);
   })
   .finally(async () => {

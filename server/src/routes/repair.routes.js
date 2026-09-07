@@ -12,7 +12,7 @@ const {
 
 const router = express.Router();
 
-// Admin-only repair creation
+// Admin only
 router.post(
   "/",
   authenticate,
