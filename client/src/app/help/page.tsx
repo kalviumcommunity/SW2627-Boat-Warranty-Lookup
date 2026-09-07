@@ -1,39 +1,47 @@
+import Link from "next/link";
+
 const topics = [
   {
     title: "Warranty",
     description:
       "Check your device warranty status, coverage period and eligibility.",
     icon: "✓",
+    href: "/warranty",
   },
   {
     title: "Warranty Claim",
     description:
       "Submit a warranty claim and understand the steps involved.",
     icon: "▤",
+    href: "/warranty-claim",
   },
   {
     title: "Product Registration",
     description:
       "Register your boAt device and keep your product information organized.",
     icon: "◉",
+    href: "/account",
   },
   {
     title: "Repair",
     description:
       "Find repair options and get support for devices outside warranty.",
     icon: "⌁",
+    href: "/repair",
   },
   {
     title: "Replacement",
     description:
       "Learn about replacement eligibility and the replacement process.",
     icon: "↻",
+    href: "/warranty-claim",
   },
   {
     title: "Payment",
     description:
       "Get help with warranty extensions, repairs and payment-related queries.",
     icon: "₹",
+    href: "/extend-warranty",
   },
 ];
 
@@ -72,10 +80,10 @@ export default function HelpPage() {
 
                 <p>{topic.description}</p>
 
-                <button type="button">
+                <Link href={topic.href} className="help-card-link">
                   Learn More
                   <span>→</span>
-                </button>
+                </Link>
               </div>
             </article>
           ))}

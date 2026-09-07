@@ -40,46 +40,6 @@ button {
   backdrop-filter: blur(14px);
 }
 
-.navbar-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 25px;
-  font-weight: 800;
-}
-
-.logo-icon {
-  font-size: 35px;
-}
-
-.navbar-links {
-  display: flex;
-  gap: 38px;
-}
-
-.navbar-links a {
-  color: #cfcfcf;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.navbar-links a:hover {
-  color: white;
-}
-
-.nav-button {
-  border: 1px solid #ffffff;
-  padding: 11px 20px;
-  border-radius: 30px;
-  font-size: 13px;
-  transition: 0.3s;
-}
-
-.nav-button:hover {
-  background: white;
-  color: black;
-}
-
 /* ================= HERO ================= */
 
 .hero {
@@ -103,115 +63,6 @@ button {
       transparent 25%
     ),
     #080808;
-}
-
-.hero-content {
-  max-width: 650px;
-  padding: 80px;
-  color: white;
-  position: relative;
-  z-index: 2;
-}
-
-.hero-tag,
-.section-label {
-  font-size: 12px;
-  letter-spacing: 3px;
-  font-weight: 700;
-  color: #ff5a1f;
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-size: clamp(65px, 8vw, 115px);
-  line-height: 0.88;
-  letter-spacing: -6px;
-}
-
-.hero h1 span,
-.device-info h2 span,
-.complaint-content h2 span,
-.connect-section h2 span {
-  color: #ff5a1f;
-}
-
-.hero-description {
-  margin-top: 35px;
-  max-width: 470px;
-  line-height: 1.7;
-  color: #a8a8a8;
-}
-
-.hero-buttons {
-  margin-top: 35px;
-  display: flex;
-  gap: 15px;
-}
-
-.primary-button,
-.secondary-button {
-  display: inline-block;
-  padding: 14px 25px;
-  border-radius: 30px;
-  border: none;
-}
-
-.primary-button {
-  background: #ff5a1f;
-  color: white;
-}
-
-.secondary-button {
-  border: 1px solid #555;
-  color: white;
-}
-
-.hero-device {
-  width: 450px;
-  height: 450px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.floating-circle {
-  position: absolute;
-  width: 390px;
-  height: 390px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  animation: float 5s ease-in-out infinite;
-}
-
-.hero-product {
-  width: 270px;
-  height: 360px;
-  border-radius: 45px;
-  background: linear-gradient(
-    145deg,
-    #252525,
-    #080808
-  );
-  box-shadow:
-    0 30px 100px rgba(0, 0, 0, 0.8),
-    inset 0 0 40px rgba(255, 255, 255, 0.04);
-  transform: rotate(-12deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 45px;
-  font-weight: 900;
-  position: relative;
-}
-
-.product-glow {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  background: #ff5a1f;
-  filter: blur(80px);
-  opacity: 0.4;
 }
 
 @keyframes float {
@@ -251,12 +102,6 @@ button {
   line-height: 1.7;
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
 .product-card,
 .problem-card {
   padding: 32px;
@@ -271,12 +116,6 @@ button {
 .problem-card:hover {
   transform: translateY(-8px);
   border-color: #ff5a1f;
-}
-
-.product-icon,
-.problem-icon {
-  font-size: 42px;
-  margin-bottom: 45px;
 }
 
 .product-card h3,
@@ -307,90 +146,6 @@ button {
   background: #080808;
 }
 
-.device-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.device-info h2,
-.complaint-content h2,
-.connect-section h2 {
-  font-size: 62px;
-  line-height: 1;
-  letter-spacing: -3px;
-}
-
-.device-info > p:not(.section-label) {
-  margin-top: 30px;
-  color: #999;
-  line-height: 1.7;
-  max-width: 500px;
-}
-
-.device-features {
-  margin-top: 35px;
-  display: grid;
-  gap: 15px;
-  color: #bbb;
-}
-
-.device-features span {
-  color: #ff5a1f;
-  margin-right: 10px;
-}
-
-.warranty-card {
-  background: #151515;
-  border: 1px solid #282828;
-  border-radius: 28px;
-  padding: 40px;
-}
-
-.warranty-form h2 {
-  font-size: 32px;
-  margin-bottom: 15px;
-}
-
-.warranty-form > p:not(.section-label) {
-  color: #888;
-  line-height: 1.6;
-  margin-bottom: 25px;
-}
-
-.warranty-form form,
-.complaint-form {
-  display: flex;
-  gap: 10px;
-}
-
-.warranty-form input,
-.complaint-form input {
-  flex: 1;
-  padding: 16px;
-  border-radius: 10px;
-  border: 1px solid #333;
-  background: #0c0c0c;
-  color: white;
-  outline: none;
-}
-
-.warranty-form input:focus,
-.complaint-form input:focus {
-  border-color: #ff5a1f;
-}
-
-.warranty-form button,
-.complaint-form button {
-  border: none;
-  border-radius: 10px;
-  padding: 0 20px;
-  background: #ff5a1f;
-  color: white;
-  font-weight: 700;
-}
-
 .warranty-result {
   margin-top: 25px;
   padding: 25px;
@@ -411,22 +166,6 @@ button {
 
 .result-header h3 {
   font-size: 25px;
-}
-
-.status {
-  padding: 8px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-}
-
-.status.active {
-  background: #163d24;
-  color: #6df39c;
-}
-
-.status.expired {
-  background: #431919;
-  color: #ff7777;
 }
 
 .result-grid {
@@ -451,12 +190,6 @@ button {
   font-size: 14px;
 }
 
-.pdf-button {
-  display: inline-block;
-  margin-top: 25px;
-  color: #ff5a1f;
-}
-
 /* ================= COMPLAINT ================= */
 
 .complaint-section {
@@ -467,69 +200,11 @@ button {
   background: #101010;
 }
 
-.complaint-content > p:not(.section-label) {
-  margin: 30px 0;
-  max-width: 480px;
-  color: #999;
-  line-height: 1.7;
-}
-
-.complaint-status {
-  padding: 40px;
-  border-radius: 25px;
-  background: #151515;
-  border: 1px solid #282828;
-}
-
-.status-line {
-  display: flex;
-  gap: 20px;
-  padding: 25px 0;
-  border-bottom: 1px solid #292929;
-}
-
-.status-line:last-child {
-  border-bottom: none;
-}
-
-.status-line strong {
-  display: block;
-  margin-bottom: 7px;
-}
-
-.status-line p {
-  color: #777;
-  font-size: 14px;
-}
-
-.status-dot {
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: #444;
-  margin-top: 4px;
-}
-
-.active-dot {
-  background: #ff5a1f;
-  box-shadow: 0 0 15px #ff5a1f;
-}
-
 /* ================= HELP ================= */
 
 .center {
   display: block;
   text-align: center;
-}
-
-.center > p {
-  margin: 15px auto 0;
-}
-
-.problem-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
 }
 
 /* ================= CONNECT ================= */
@@ -547,37 +222,6 @@ button {
       transparent 30%
     ),
     #080808;
-}
-
-.connect-section > div > p:not(.section-label) {
-  max-width: 500px;
-  color: #999;
-  line-height: 1.7;
-  margin: 30px 0;
-}
-
-.connect-card {
-  padding: 40px;
-  border: 1px solid #292929;
-  background: #151515;
-  border-radius: 25px;
-}
-
-.connect-card span {
-  font-size: 45px;
-  color: #ff5a1f;
-  font-weight: 800;
-}
-
-.connect-card h3 {
-  margin-top: 20px;
-  font-size: 22px;
-}
-
-.connect-card p {
-  color: #888;
-  line-height: 1.6;
-  margin-top: 12px;
 }
 
 /* ================= FOOTER ================= */
@@ -621,49 +265,12 @@ button {
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 1000px) {
-  .hero,
-  .device-container,
-  .complaint-section,
-  .connect-section {
-    grid-template-columns: 1fr;
-    flex-direction: column;
-  }
-
-  .hero {
-    display: flex;
-  }
-
-  .hero-device {
-    width: 320px;
-    height: 320px;
-  }
-
-  .product-grid,
-  .problem-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 700px) {
-  .navbar-links {
-    display: none;
-  }
 
   .navbar {
     padding: 0 5%;
-  }
-
-  .hero,
-  .products-section,
-  .device-section,
-  .complaint-section,
-  .help-section,
-  .connect-section {
-    padding: 80px 5%;
-  }
-
-  .hero h1 {
-    font-size: 65px;
   }
 
   .section-heading {
@@ -675,21 +282,6 @@ button {
   .complaint-content h2,
   .connect-section h2 {
     font-size: 45px;
-  }
-
-  .product-grid,
-  .problem-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .warranty-form form,
-  .complaint-form {
-    flex-direction: column;
-  }
-
-  .warranty-form button,
-  .complaint-form button {
-    padding: 15px;
   }
 
   .footer {
@@ -705,88 +297,6 @@ button {
   margin-top: 8px;
   font-size: 12px;
   color: #777;
-}
-
-.error-message {
-  margin-top: 10px;
-  color: #ff7777;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.warranty-form button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.warranty-form input:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-.nav-product {
-  position: relative;
-  cursor: pointer;
-}
-
-.product-menu {
-  position: absolute;
-  top: 35px;
-  left: -100px;
-
-  width: 600px;
-  min-height: 300px;
-
-  display: flex;
-  gap: 20px;
-
-  padding: 20px;
-
-  background: #111;
-  border: 1px solid #333;
-  border-radius: 12px;
-
-  z-index: 1000;
-}
-
-.product-list {
-  width: 55%;
-  border-right: 1px solid #333;
-  padding-right: 20px;
-}
-
-.product-list h4 {
-  margin-bottom: 15px;
-}
-
-.product-menu-item {
-  padding: 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.product-menu-item:hover {
-  background: #222;
-  color: #ff5a1f;
-}
-
-.product-preview {
-  width: 45%;
-}
-
-.product-preview img {
-  width: 100%;
-  height: 130px;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.product-preview h3 {
-  margin-top: 10px;
-}
-
-.product-preview p {
-  color: #aaa;
-  margin-bottom: 15px;
 }
 /* ========================================
    NAVBAR
@@ -810,19 +320,6 @@ button {
   justify-content: space-between;
 }
 
-.navbar-logo {
-  color: white;
-  font-size: 28px;
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.navbar-links {
-  display: flex;
-  align-items: center;
-  gap: 38px;
-}
-
 .nav-link {
   color: #e5e5e5;
   text-decoration: none;
@@ -833,32 +330,6 @@ button {
 .nav-link:hover {
   color: #ff5a1f;
 }
-
-.nav-product-wrapper {
-  position: static;
-  height: 72px;
-
-  display: flex;
-  align-items: center;
-}
-
-.connect-button {
-  color: white;
-  border: 1px solid #777;
-  border-radius: 22px;
-  padding: 10px 20px;
-
-  text-decoration: none;
-  font-size: 13px;
-
-  transition: 0.2s;
-}
-
-.connect-button:hover {
-  background: #ff5a1f;
-  border-color: #ff5a1f;
-}
-
 
 /* ========================================
    PRODUCTS MEGA MENU
@@ -886,46 +357,12 @@ button {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
-.product-menu h4 {
-  color: #999;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-
-  margin: 0 0 15px;
-}
-
-
 /* Categories */
 
 .product-categories {
   padding-right: 20px;
   border-right: 1px solid #292929;
 }
-
-.product-categories button {
-  width: 100%;
-  display: block;
-
-  background: transparent;
-  border: 0;
-
-  color: #ddd;
-  text-align: left;
-
-  padding: 12px;
-  margin-bottom: 4px;
-
-  border-radius: 8px;
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.product-categories button:hover {
-  background: #1c1c1c;
-  color: #ff5a1f;
-}
-
 
 /* Popular products */
 
@@ -934,114 +371,12 @@ button {
   border-right: 1px solid #292929;
 }
 
-.product-menu-item {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  padding: 9px;
-  margin-bottom: 6px;
-
-  background: transparent;
-  border: 0;
-
-  border-radius: 8px;
-
-  text-align: left;
-  color: white;
-
-  cursor: pointer;
-}
-
-.product-menu-item:hover {
-  background: #1d1d1d;
-}
-
-.product-menu-item img {
-  width: 48px;
-  height: 48px;
-
-  object-fit: cover;
-  border-radius: 7px;
-}
-
-.product-menu-item span {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.product-menu-item strong {
-  font-size: 13px;
-}
-
-.product-menu-item small {
-  color: #888;
-  font-size: 11px;
-}
-
-.view-products {
-  display: inline-block;
-
-  margin-top: 10px;
-
-  color: #ff5a1f;
-  text-decoration: none;
-
-  font-size: 13px;
-}
-
-
 /* Product preview */
 
 .product-preview {
   background: #181818;
   border-radius: 10px;
   padding: 15px;
-}
-
-.product-preview img {
-  width: 100%;
-  height: 150px;
-
-  object-fit: cover;
-  border-radius: 8px;
-
-  margin-bottom: 12px;
-}
-
-.product-preview h3 {
-  margin: 0 0 5px;
-
-  color: white;
-  font-size: 17px;
-}
-
-.product-preview p {
-  margin: 0 0 15px;
-
-  color: #999;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.orange-button {
-  display: inline-block;
-
-  background: #ff5a1f;
-  color: white;
-
-  padding: 10px 18px;
-  border-radius: 7px;
-
-  text-decoration: none;
-  font-size: 12px;
-}
-
-.orange-button:hover {
-  background: #ff6b35;
 }
 /* ========================================
    WARRANTY PAGE
@@ -1053,44 +388,6 @@ button {
   margin: auto;
   padding: 30px 30px 80px;
 }
-
-.breadcrumb {
-  color: #777;
-  font-size: 12px;
-  margin-bottom: 60px;
-}
-
-.breadcrumb span {
-  color: #ff5a1f;
-  margin: 0 8px;
-}
-
-.warranty-hero {
-  max-width: 750px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.eyebrow {
-  color: #ff5a1f;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-}
-
-.warranty-hero h1 {
-  color: white;
-  font-size: clamp(35px, 5vw, 56px);
-  margin: 12px 0;
-}
-
-.warranty-description {
-  color: #999;
-  line-height: 1.7;
-  max-width: 600px;
-  margin: 0 auto 35px;
-}
-
 
 /* Serial help card */
 
@@ -1121,29 +418,6 @@ button {
   line-height: 1.6;
   max-width: 430px;
 }
-
-.serial-example {
-  min-width: 160px;
-
-  padding: 20px;
-
-  background: #1a1a1a;
-  border-radius: 10px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.serial-example span {
-  color: #888;
-  font-size: 11px;
-}
-
-.serial-example strong {
-  color: white;
-  font-size: 14px;
-}
 /* ========================================
    HELP PAGE
 ======================================== */
@@ -1155,44 +429,6 @@ button {
   margin: auto;
 
   padding: 80px 30px;
-}
-
-.help-header {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 55px;
-}
-
-.help-header h1 {
-  color: white;
-
-  font-size: clamp(36px, 5vw, 54px);
-
-  margin: 10px 0 15px;
-}
-
-.help-header > p:not(.eyebrow) {
-  color: #888;
-  line-height: 1.7;
-}
-
-.help-search {
-  width: 100%;
-
-  margin-top: 30px;
-
-  padding: 16px 20px;
-
-  background: #111;
-  border: 1px solid #333;
-  border-radius: 9px;
-
-  color: white;
-  outline: none;
-}
-
-.help-search:focus {
-  border-color: #ff5a1f;
 }
 
 .help-grid {
@@ -1230,23 +466,6 @@ button {
   border-color: #ff5a1f;
 }
 
-.help-icon {
-  width: 48px;
-  height: 48px;
-
-  flex-shrink: 0;
-
-  display: grid;
-  place-items: center;
-
-  border: 1px solid #ff5a1f;
-  border-radius: 10px;
-
-  color: #ff5a1f;
-
-  font-size: 22px;
-}
-
 .help-card h2 {
   margin: 0 0 8px;
 
@@ -1272,26 +491,6 @@ button {
 
   .navbar-inner {
     padding: 0 20px;
-  }
-
-  .navbar-links {
-    gap: 15px;
-  }
-
-  .connect-button {
-    display: none;
-  }
-
-  .product-menu {
-    grid-template-columns: 1fr;
-  }
-
-  .product-categories,
-  .popular-products {
-    border-right: 0;
-    border-bottom: 1px solid #292929;
-    padding-bottom: 15px;
-    padding-right: 0;
   }
 
   .help-grid {
@@ -1337,10 +536,6 @@ button {
   font-size: 28px;
   font-weight: 800;
   letter-spacing: -1.5px;
-}
-
-.navbar-logo:hover {
-  color: #ff5a1f;
 }
 
 /* CENTER */
@@ -1401,10 +596,6 @@ button {
   position: relative;
 }
 
-.products-link {
-  gap: 6px;
-}
-
 /* =========================================
    MEGA MENU
 ========================================= */
@@ -1443,23 +634,6 @@ button {
   min-width: 0;
 }
 
-.categories-column,
-.popular-column {
-  border-right: 1px solid #2b2b2b;
-  padding-right: 22px;
-}
-
-.mega-heading {
-  color: #888888;
-
-  font-size: 10px;
-  font-weight: 700;
-
-  letter-spacing: 1.5px;
-
-  margin: 0 0 18px;
-}
-
 /* CATEGORY */
 
 .mega-category {
@@ -1481,17 +655,6 @@ button {
   transition: 0.2s ease;
 }
 
-.mega-category:hover {
-  color: #ff5a1f;
-  background: #1c1c1c;
-  transform: translateX(3px);
-}
-
-.category-icon {
-  width: 22px;
-  text-align: center;
-}
-
 /* POPULAR PRODUCTS */
 
 .popular-product {
@@ -1504,36 +667,6 @@ button {
 
   color: white;
   text-decoration: none;
-}
-
-.popular-product img {
-  width: 48px;
-  height: 48px;
-
-  border-radius: 8px;
-
-  object-fit: contain;
-
-  background: #222222;
-}
-
-.popular-product strong {
-  display: block;
-
-  font-size: 13px;
-  margin-bottom: 3px;
-}
-
-.popular-product span {
-  display: block;
-
-  color: #777777;
-
-  font-size: 10px;
-}
-
-.popular-product:hover strong {
-  color: #ff5a1f;
 }
 
 .view-all-products {
@@ -1554,54 +687,6 @@ button {
   padding: 0 4px;
 }
 
-.featured-image {
-  width: 100%;
-  height: 155px;
-
-  border-radius: 10px;
-
-  background: #191919;
-
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.featured-image img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-
-  padding: 12px;
-
-  transition: transform 0.3s ease;
-}
-
-.featured-image:hover img {
-  transform: scale(1.05);
-}
-
-.mega-featured-product h3 {
-  color: #ffffff;
-
-  font-size: 17px;
-
-  margin: 14px 0 7px;
-}
-
-.mega-featured-product p {
-  color: #888888;
-
-  font-size: 12px;
-
-  line-height: 1.5;
-
-  margin-bottom: 15px;
-}
-
 /* CONNECT BUTTON */
 
 .connect-button {
@@ -1619,40 +704,12 @@ button {
 
   transition: 0.2s ease;
 }
-
-.connect-button:hover {
-  background: #ff5a1f;
-  border-color: #ff5a1f;
-  color: #ffffff;
-}
 /* =========================================
    HOME HERO IMPROVEMENTS
 ========================================= */
 
 .hero {
   min-height: calc(100vh - 72px);
-}
-
-.hero-text h1 {
-  line-height: 0.95;
-  margin: 25px 0 25px;
-}
-
-.hero-text h1 span {
-  display: block;
-}
-
-.hero-copy {
-  max-width: 580px;
-  line-height: 1.7;
-  margin-bottom: 28px;
-}
-
-.hero-buttons {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-top: 25px;
 }
 
 /* =========================================
@@ -1708,12 +765,6 @@ button {
   padding: 20px;
 }
 
-.product-type {
-  color: #777;
-  font-size: 12px;
-  margin-bottom: 8px;
-}
-
 .product-card-content h2 {
   color: #fff;
   font-size: 18px;
@@ -1728,22 +779,6 @@ button {
 
 .product-card-content a:hover {
   text-decoration: underline;
-}
-
-.empty-products {
-  padding: 50px;
-  text-align: center;
-  border: 1px solid #292929;
-  border-radius: 14px;
-  margin-top: 30px;
-}
-
-.empty-products h2 {
-  color: white;
-}
-
-.empty-products p {
-  color: #777;
 }
 /* =========================================
    PRODUCT CARDS
@@ -1803,12 +838,6 @@ button {
   padding: 18px;
 }
 
-.product-type {
-  color: #777777;
-  font-size: 11px;
-  margin-bottom: 7px;
-}
-
 .product-card h3 {
   color: white;
   margin-bottom: 12px;
@@ -1828,112 +857,6 @@ button {
   padding: 35px 20px 90px;
 }
 
-.breadcrumb {
-  max-width: 1100px;
-  margin: 0 auto 65px;
-
-  color: #777777;
-  font-size: 12px;
-}
-
-.breadcrumb span {
-  color: #ff5a1f;
-  margin: 0 10px;
-}
-
-.warranty-header {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 50px;
-}
-
-.warranty-header h1 {
-  font-size: clamp(38px, 5vw, 62px);
-  line-height: 1.05;
-
-  margin: 15px 0;
-}
-
-.warranty-header > p:last-child {
-  color: #888888;
-  line-height: 1.7;
-  max-width: 650px;
-  margin: 0 auto;
-}
-
-.warranty-container {
-  width: min(900px, 100%);
-  margin: 0 auto;
-}
-
-.warranty-card {
-  background: #111111;
-
-  border: 1px solid #2b2b2b;
-  border-radius: 14px;
-
-  padding: 35px;
-
-  text-align: center;
-}
-
-.warranty-card h2 {
-  margin-bottom: 8px;
-}
-
-.warranty-card > p {
-  color: #777777;
-  margin-bottom: 30px;
-}
-
-.serial-help-card {
-  margin-top: 20px;
-
-  padding: 28px;
-
-  border-radius: 14px;
-
-  border: 1px solid #292929;
-  background: #0e0e0e;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 30px;
-}
-
-.serial-help-card h2 {
-  margin: 8px 0 10px;
-}
-
-.serial-help-card p:not(.eyebrow) {
-  color: #777777;
-  line-height: 1.6;
-  max-width: 520px;
-}
-
-.serial-example {
-  min-width: 160px;
-
-  padding: 20px;
-
-  border-radius: 10px;
-
-  background: #191919;
-}
-
-.serial-example small {
-  display: block;
-  color: #777777;
-  margin-bottom: 8px;
-}
-
-.serial-example strong {
-  color: white;
-  letter-spacing: 1px;
-}
-
 /* =========================================
    HELP PAGE
 ========================================= */
@@ -1943,24 +866,6 @@ button {
   margin: 0 auto;
 
   padding: 90px 0 110px;
-}
-
-.help-header {
-  text-align: center;
-
-  max-width: 650px;
-
-  margin: 0 auto 55px;
-}
-
-.help-header h1 {
-  font-size: clamp(40px, 5vw, 60px);
-  margin: 12px 0;
-}
-
-.help-header > p:last-child {
-  color: #777777;
-  line-height: 1.6;
 }
 
 .help-grid {
@@ -2001,12 +906,6 @@ button {
   transform: translateY(-4px);
 }
 
-.help-number {
-  color: #ff5a1f;
-  font-size: 12px;
-  font-weight: 700;
-}
-
 .help-card h2 {
   font-size: 18px;
   margin-bottom: 7px;
@@ -2016,11 +915,6 @@ button {
   color: #777777;
   font-size: 13px;
   line-height: 1.5;
-}
-
-.help-arrow {
-  color: #ff5a1f;
-  font-size: 20px;
 }
 
 /* =========================================
@@ -2034,46 +928,12 @@ button {
   padding: 90px 0 110px;
 }
 
-.contact-header {
-  text-align: center;
-  max-width: 650px;
-  margin: 0 auto 55px;
-}
-
-.contact-header h1 {
-  font-size: clamp(40px, 5vw, 60px);
-  margin: 12px 0;
-}
-
-.contact-header > p:last-child {
-  color: #777777;
-}
-
 .contact-grid {
   display: grid;
 
   grid-template-columns: repeat(4, 1fr);
 
   gap: 14px;
-}
-
-.contact-card {
-  padding: 25px;
-
-  min-height: 210px;
-
-  background: #111111;
-
-  border: 1px solid #292929;
-
-  border-radius: 12px;
-
-  transition: 0.25s ease;
-}
-
-.contact-card:hover {
-  border-color: #ff5a1f;
-  transform: translateY(-4px);
 }
 
 .contact-icon {
@@ -2091,75 +951,6 @@ button {
 
   margin-bottom: 20px;
 }
-
-.contact-card h2 {
-  font-size: 16px;
-  margin-bottom: 12px;
-}
-
-.contact-card strong {
-  display: block;
-
-  font-size: 12px;
-
-  color: #ff5a1f;
-
-  margin-bottom: 10px;
-}
-
-.contact-card p {
-  color: #777777;
-
-  font-size: 12px;
-
-  line-height: 1.5;
-}
-
-.contact-office {
-  margin-top: 20px;
-
-  padding: 40px;
-
-  background:
-    linear-gradient(
-      120deg,
-      #111111,
-      #17100d
-    );
-
-  border: 1px solid #292929;
-
-  border-radius: 14px;
-}
-
-.contact-office h2 {
-  font-size: 28px;
-  margin: 10px 0;
-}
-
-.contact-office p:not(.eyebrow) {
-  color: #777777;
-  line-height: 1.6;
-}
-
-.contact-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 25px;
-}
-
-.outline-button {
-  padding: 12px 20px;
-
-  border: 1px solid #444444;
-
-  border-radius: 7px;
-
-  color: white;
-  text-decoration: none;
-
-  font-size: 12px;
-}
 /* =========================================
    HOME PAGE
 ========================================= */
@@ -2175,10 +966,6 @@ button {
   gap: 50px;
 }
 
-.hero-content {
-  max-width: 580px;
-}
-
 .hero-label {
   display: inline-block;
   margin-bottom: 18px;
@@ -2186,26 +973,6 @@ button {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 2px;
-}
-
-.hero-content h1 {
-  margin: 0 0 22px;
-  font-size: clamp(48px, 6vw, 76px);
-  line-height: 0.98;
-  font-weight: 800;
-  letter-spacing: -3px;
-}
-
-.hero-content h1 span {
-  color: #ff5a00;
-}
-
-.hero-content > p {
-  max-width: 500px;
-  margin-bottom: 32px;
-  color: #a6a6a6;
-  font-size: 17px;
-  line-height: 1.7;
 }
 
 .hero-actions {
@@ -2247,34 +1014,6 @@ button {
   color: #ff5a00;
 }
 
-.trust-points {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-top: 42px;
-}
-
-.trust-points div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #aaa;
-  font-size: 13px;
-}
-
-.trust-points strong {
-  color: #ff5a00;
-  font-size: 16px;
-}
-
-.hero-image-wrapper {
-  position: relative;
-  min-height: 450px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .hero-glow {
   position: absolute;
   width: 350px;
@@ -2282,22 +1021,6 @@ button {
   border-radius: 50%;
   background: rgba(255, 90, 0, 0.12);
   filter: blur(70px);
-}
-
-.hero-image {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 500px;
-  max-height: 450px;
-  object-fit: contain;
-  border-radius: 20px;
-}
-
-.quick-actions {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 70px 24px 100px;
 }
 
 .section-heading {
@@ -2316,97 +1039,12 @@ button {
   line-height: 1.6;
 }
 
-.quick-actions-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.support-card {
-  position: relative;
-  min-height: 230px;
-  padding: 28px;
-  border: 1px solid #222;
-  border-radius: 14px;
-  background: #101010;
-  transition: 0.25s ease;
-}
-
-.support-card:hover {
-  transform: translateY(-5px);
-  border-color: #ff5a00;
-}
-
-.support-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin-bottom: 25px;
-  border-radius: 10px;
-  background: rgba(255, 90, 0, 0.12);
-  color: #ff5a00;
-  font-size: 20px;
-}
-
-.support-card h3 {
-  margin-bottom: 10px;
-  font-size: 19px;
-}
-
-.support-card p {
-  color: #999;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.card-arrow {
-  position: absolute;
-  right: 25px;
-  bottom: 22px;
-  color: #ff5a00;
-  font-size: 20px;
-}
-
 /* Responsive */
 
 @media (max-width: 900px) {
-  .hero-section {
-    grid-template-columns: 1fr;
-    padding-top: 50px;
-  }
-
-  .hero-image-wrapper {
-    min-height: 350px;
-  }
-
-  .quick-actions-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 600px) {
-  .hero-content h1 {
-    font-size: 48px;
-  }
-
-  .hero-section {
-    padding: 40px 18px;
-  }
-
-  .quick-actions {
-    padding: 50px 18px 70px;
-  }
-
-  .quick-actions-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .trust-points {
-    flex-direction: column;
-    gap: 12px;
-  }
 }
 /* =========================================
    NEXT.JS APP UI
@@ -2611,12 +1249,7 @@ button {
   color: #999;
 }
 
-.contact-card,
-.help-card {
-  min-height: 190px;
-}
-
-.help-card button {
+.help-card-link {
   margin-top: 20px;
   border: none;
   background: transparent;
@@ -2629,31 +1262,6 @@ button {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.plan-card {
-  color: white;
-  text-align: left;
-  cursor: pointer;
-}
-
-.plan-card span,
-.plan-card strong,
-.plan-card small {
-  display: block;
-}
-
-.plan-card strong {
-  margin: 15px 0;
-  font-size: 30px;
-}
-
-.plan-card small {
-  color: #999;
-}
-
-.plan-selected {
-  border-color: #ff5b00;
-}
-
 .payment-section,
 .repair-info {
   margin-top: 30px;
@@ -2661,25 +1269,6 @@ button {
   border-radius: 14px;
   border: 1px solid #292929;
   background: #111;
-}
-
-.repair-info {
-  display: flex;
-  gap: 60px;
-}
-
-.repair-info span,
-.repair-info strong {
-  display: block;
-}
-
-.repair-info span {
-  color: #888;
-}
-
-.repair-info strong {
-  margin-top: 8px;
-  font-size: 25px;
 }
 
 .pagination {
@@ -2764,17 +1353,6 @@ button {
   min-height: 150px;
 }
 
-.admin-card span {
-  display: block;
-  color: #888;
-}
-
-.admin-card strong {
-  display: block;
-  margin-top: 10px;
-  font-size: 32px;
-}
-
 .loading-spinner {
   width: 40px;
   height: 40px;
@@ -2808,11 +1386,6 @@ button {
   .plans-grid,
   .product-detail {
     grid-template-columns: 1fr;
-  }
-
-  .repair-info {
-    flex-direction: column;
-    gap: 20px;
   }
 
   .search-form {
@@ -3531,7 +2104,7 @@ button {
   line-height: 1.6;
 }
 
-.help-card button {
+.help-card-link {
   margin-top: 16px;
 
   padding: 0;
@@ -3551,11 +2124,11 @@ button {
   cursor: pointer;
 }
 
-.help-card button span {
+.help-card-link span {
   transition: 0.2s ease;
 }
 
-.help-card button:hover span {
+.help-card-link:hover span {
   transform: translateX(4px);
 }
 
@@ -3577,192 +2150,10 @@ button {
   padding-bottom: 70px;
 }
 
-.warranty-heading {
-  max-width: 720px;
-  margin-bottom: 42px;
-}
-
-.warranty-layout {
-  max-width: 1050px;
-  margin: 0 auto;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  gap: 24px;
-
-  align-items: stretch;
-}
-
-.warranty-copy,
-.warranty-form-wrapper {
-  border: 1px solid #292929;
-  border-radius: 16px;
-
-  background: #111;
-
-  padding: 35px;
-}
-
-.warranty-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  background:
-    radial-gradient(
-      circle at 80% 40%,
-      rgba(255, 91, 0, 0.12),
-      transparent 45%
-    ),
-    #111;
-}
-
-.warranty-copy h2 {
-  margin: 12px 0 18px;
-
-  font-size: clamp(32px, 4vw, 48px);
-  line-height: 1.05;
-}
-
-.warranty-copy > p {
-  max-width: 450px;
-
-  color: #999;
-
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.warranty-benefits {
-  margin-top: 30px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.warranty-benefits > div {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.warranty-benefits > div > span {
-  width: 28px;
-  height: 28px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: rgba(255, 91, 0, 0.12);
-
-  color: #ff5b00;
-}
-
-.warranty-benefits p {
-  margin: 0;
-}
-
-.warranty-benefits strong,
-.warranty-benefits small {
-  display: block;
-}
-
-.warranty-benefits strong {
-  font-size: 13px;
-}
-
-.warranty-benefits small {
-  margin-top: 3px;
-
-  color: #777;
-
-  font-size: 11px;
-}
-
-.warranty-form-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.warranty-form-header {
-  margin-bottom: 25px;
-}
-
-.warranty-form-header h2 {
-  margin-bottom: 6px;
-  font-size: 22px;
-}
-
-.warranty-form-header p {
-  color: #777;
-  font-size: 12px;
-}
-
-.warranty-form-wrapper .warranty-form,
-.warranty-form-wrapper form {
-  width: 100%;
-}
-
-.warranty-form-wrapper .form-card {
-  width: 100%;
-  padding: 0;
-  border: none;
-  background: transparent;
-}
-
-.support-strip {
-  max-width: 1050px;
-  margin: 24px auto 0;
-
-  padding: 22px 28px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-
-  border: 1px solid #292929;
-  border-radius: 14px;
-
-  background: #0f0f0f;
-}
-
-.support-strip h2 {
-  margin-top: 5px;
-  font-size: 19px;
-}
-
-.support-strip > p {
-  max-width: 430px;
-
-  color: #888;
-
-  font-size: 13px;
-  line-height: 1.5;
-}
-
 @media (max-width: 800px) {
-  .warranty-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .support-strip {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
 @media (max-width: 500px) {
-  .warranty-copy,
-  .warranty-form-wrapper {
-    padding: 25px;
-  }
 }
 /* =========================================
    PREMIUM CONTACT PAGE
@@ -4622,80 +3013,11 @@ textarea {
   padding-bottom: 55px;
 }
 
-.auth-page .container {
-  width: 100%;
-}
-
-.auth-heading {
-  max-width: 550px;
-
-  margin: 0 auto 28px;
-
-  text-align: center;
-}
-
-.auth-heading h1 {
-  margin: 10px 0;
-
-  font-size: clamp(34px, 4vw, 48px);
-}
-
-.auth-heading p {
-  color: #888;
-
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.login-form,
-.signup-form {
-  width: min(100%, 520px);
-
-  margin: 0 auto;
-
-  padding: 30px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #151515,
-      #101010
-    );
-
-  border: 1px solid #2a2a2a;
-
-  border-radius: 16px;
-}
-
-.auth-switch,
-.auth-footer {
-  margin-top: 20px;
-
-  text-align: center;
-
-  font-size: 12px;
-
-  color: #777;
-}
-
-.auth-switch a,
-.auth-footer a {
-  margin-left: 5px;
-
-  color: #ff5b00;
-
-  font-weight: 700;
-}
-
 .signup-form {
   max-width: 600px;
 }
 
 @media (max-width: 550px) {
-  .login-form,
-  .signup-form {
-    padding: 22px;
-  }
 }
 
 /* =========================================
@@ -5364,11 +3686,6 @@ textarea {
   color: #ffffff;
 }
 
-.warranty-container {
-  width: min(1380px, calc(100% - 80px));
-  margin: 0 auto;
-}
-
 /* Breadcrumb */
 
 .warranty-breadcrumb {
@@ -5380,106 +3697,16 @@ textarea {
   font-size: 14px;
 }
 
-.warranty-breadcrumb strong {
-  color: #ffffff;
-  font-weight: 500;
-}
-
 /* Main section */
 
 .warranty-main-section {
   padding: 20px 0 70px;
 }
 
-.warranty-main-grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.15fr 0.95fr;
-  gap: 42px;
-  align-items: center;
-  min-height: 500px;
-}
-
 /* Left */
 
 .warranty-intro {
   padding: 20px 0;
-}
-
-.warranty-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: #ff5a00;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 1.8px;
-}
-
-.warranty-label::before {
-  content: "";
-  width: 30px;
-  height: 2px;
-  background: #ff5a00;
-}
-
-.warranty-intro h1 {
-  margin: 20px 0 22px;
-  font-size: clamp(44px, 4vw, 68px);
-  line-height: 0.98;
-  letter-spacing: -2px;
-  font-weight: 800;
-}
-
-.warranty-intro h1 span {
-  color: #ff5a00;
-}
-
-.warranty-intro-text {
-  max-width: 460px;
-  color: #a7a7a7;
-  font-size: 17px;
-  line-height: 1.65;
-}
-
-.warranty-benefits {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 34px;
-}
-
-.warranty-benefit {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.warranty-benefit-icon {
-  width: 52px;
-  height: 52px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: rgba(255, 90, 0, 0.13);
-  border: 1px solid rgba(255, 90, 0, 0.3);
-  color: #ff5a00;
-  font-size: 22px;
-}
-
-.warranty-benefit strong,
-.warranty-benefit span {
-  display: block;
-}
-
-.warranty-benefit strong {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-.warranty-benefit span {
-  color: #8f8f8f;
-  font-size: 14px;
 }
 
 /* Center form */
@@ -5498,35 +3725,6 @@ textarea {
     ),
     #101010;
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
-}
-
-.warranty-form-heading {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 28px;
-}
-
-.warranty-form-icon {
-  width: 60px;
-  height: 60px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  background: rgba(255, 90, 0, 0.15);
-  color: #ff5a00;
-  font-size: 28px;
-}
-
-.warranty-form-heading h2 {
-  margin: 0 0 5px;
-  font-size: 24px;
-}
-
-.warranty-form-heading p {
-  margin: 0;
-  color: #858585;
-  font-size: 14px;
 }
 
 /* Form */
@@ -5681,20 +3879,6 @@ textarea {
   font-size: 13px;
 }
 
-.warranty-help-link > span:first-child {
-  width: 22px;
-  height: 22px;
-  display: grid;
-  place-items: center;
-  border: 1px solid #777;
-  border-radius: 50%;
-}
-
-.orange-arrow {
-  color: #ff5a00;
-  font-size: 18px;
-}
-
 /* Right product */
 
 .warranty-product-area {
@@ -5706,81 +3890,6 @@ textarea {
   align-items: center;
 }
 
-.warranty-product-glow {
-  position: absolute;
-  width: 360px;
-  height: 360px;
-  border: 1px solid rgba(255, 90, 0, 0.6);
-  border-radius: 50%;
-  box-shadow:
-    0 0 80px rgba(255, 90, 0, 0.12),
-    inset 0 0 50px rgba(255, 90, 0, 0.05);
-}
-
-.warranty-product-image {
-  position: relative;
-  z-index: 1;
-  width: 330px;
-  height: 330px;
-  display: grid;
-  place-items: center;
-}
-
-.warranty-product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  mix-blend-mode: screen;
-  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.65));
-}
-
-.warranty-serial-card {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 390px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 18px;
-  margin-top: -5px;
-  border: 1px solid #303030;
-  border-radius: 14px;
-  background: rgba(16, 16, 16, 0.94);
-  backdrop-filter: blur(12px);
-}
-
-.warranty-serial-icon {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  background: rgba(255, 90, 0, 0.14);
-  color: #ff5a00;
-  font-size: 22px;
-}
-
-.warranty-serial-card strong {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 14px;
-}
-
-.warranty-serial-card p {
-  margin: 0;
-  color: #8d8d8d;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.warranty-serial-card > span:last-child {
-  margin-left: auto;
-  color: #ffffff;
-  font-size: 25px;
-}
-
 /* Support section */
 
 .warranty-support-section {
@@ -5788,133 +3897,11 @@ textarea {
   border-top: 1px solid #202020;
 }
 
-.warranty-support-heading {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 30px;
-  margin-bottom: 26px;
-}
-
-.warranty-support-heading h2 {
-  margin: 12px 0 6px;
-  font-size: 32px;
-}
-
-.warranty-support-heading p {
-  margin: 0;
-  color: #8d8d8d;
-  font-size: 15px;
-}
-
-.warranty-view-all {
-  color: #ff5a00;
-  font-size: 14px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.warranty-support-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.warranty-support-card {
-  position: relative;
-  min-height: 150px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 22px;
-  border: 1px solid #292929;
-  border-radius: 14px;
-  background: #111111;
-  transition: 0.2s ease;
-}
-
-.warranty-support-card:hover {
-  border-color: #ff5a00;
-  transform: translateY(-3px);
-}
-
-.warranty-support-icon {
-  width: 50px;
-  height: 50px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  border-radius: 11px;
-  background: rgba(255, 90, 0, 0.15);
-  color: #ff5a00;
-  font-size: 22px;
-}
-
-.warranty-support-content {
-  padding-right: 20px;
-}
-
-.warranty-support-content strong {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 15px;
-}
-
-.warranty-support-content p {
-  margin: 0;
-  color: #888888;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.warranty-support-arrow {
-  position: absolute;
-  right: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #ffffff;
-  font-size: 18px;
-}
-
 /* =========================================================
    TABLET
    ========================================================= */
 
 @media (max-width: 1100px) {
-
-  .warranty-container {
-    width: min(100% - 40px, 900px);
-  }
-
-  .warranty-main-grid {
-    grid-template-columns: 1fr 1.2fr;
-    gap: 30px;
-  }
-
-  .warranty-product-area {
-    grid-column: 1 / -1;
-    min-height: 360px;
-    flex-direction: row;
-    gap: 25px;
-  }
-
-  .warranty-product-image {
-    width: 260px;
-    height: 260px;
-  }
-
-  .warranty-product-glow {
-    width: 280px;
-    height: 280px;
-  }
-
-  .warranty-serial-card {
-    max-width: 330px;
-  }
-
-  .warranty-support-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 /* =========================================================
@@ -5922,95 +3909,6 @@ textarea {
    ========================================================= */
 
 @media (max-width: 700px) {
-
-  .warranty-container {
-    width: calc(100% - 32px);
-  }
-
-  .warranty-breadcrumb {
-    padding: 18px 0;
-    font-size: 12px;
-  }
-
-  .warranty-main-section {
-    padding: 10px 0 45px;
-  }
-
-  .warranty-main-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .warranty-intro h1 {
-    font-size: 42px;
-    letter-spacing: -1.5px;
-  }
-
-  .warranty-intro-text {
-    font-size: 15px;
-  }
-
-  .warranty-benefits {
-    gap: 15px;
-    margin-top: 25px;
-  }
-
-  .warranty-benefit-icon {
-    width: 44px;
-    height: 44px;
-  }
-
-  .warranty-form-card {
-    padding: 22px;
-  }
-
-  .warranty-form-heading h2 {
-    font-size: 20px;
-  }
-
-  .warranty-product-area {
-    min-height: 300px;
-    flex-direction: column;
-  }
-
-  .warranty-product-image {
-    width: 220px;
-    height: 220px;
-  }
-
-  .warranty-product-glow {
-    width: 230px;
-    height: 230px;
-  }
-
-  .warranty-serial-card {
-    width: 100%;
-  }
-
-  .warranty-support-section {
-    padding: 40px 0 55px;
-  }
-
-  .warranty-support-heading {
-    display: block;
-  }
-
-  .warranty-support-heading h2 {
-    font-size: 27px;
-  }
-
-  .warranty-view-all {
-    display: inline-block;
-    margin-top: 15px;
-  }
-
-  .warranty-support-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .warranty-support-card {
-    min-height: 125px;
-  }
 }
 
 /* =========================================================
@@ -8097,4 +5995,209 @@ textarea {
 .lookup-content {
   position: relative;
   z-index: 2;
+}
+/* =========================================
+   WARRANTY COUNTDOWN
+========================================= */
+
+.countdown-card {
+  margin-top: 24px;
+  padding: 22px 24px;
+  border: 1px solid #292929;
+  border-radius: 14px;
+  background: #111;
+}
+
+.countdown-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.countdown-heading {
+  font-weight: 700;
+  font-size: 14px;
+  color: #ccc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.countdown-pill {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.countdown-pill-safe {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.countdown-pill-warning {
+  background: rgba(255, 91, 0, 0.15);
+  color: #ff5b00;
+}
+
+.countdown-pill-expired {
+  background: rgba(255, 82, 82, 0.15);
+  color: #ff5252;
+}
+
+.countdown-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: #262626;
+  overflow: hidden;
+}
+
+.countdown-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.countdown-fill-safe {
+  background: #22c55e;
+}
+
+.countdown-fill-warning {
+  background: #ff5b00;
+}
+
+.countdown-fill-expired {
+  background: #ff5252;
+}
+
+.countdown-dates {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #888;
+}
+
+/* =========================================
+   CLAIM STATUS TIMELINE
+========================================= */
+
+.claim-timeline-card {
+  margin: 30px auto 0;
+  max-width: 560px;
+  padding: 28px 24px;
+  border: 1px solid #292929;
+  border-radius: 14px;
+  background: #111;
+  text-align: left;
+}
+
+.claim-timeline-heading {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ccc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 22px;
+}
+
+.claim-timeline {
+  display: flex;
+  justify-content: space-between;
+}
+
+.claim-timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.claim-timeline-marker-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.claim-timeline-marker {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  background: #262626;
+  color: #888;
+  border: 2px solid #333;
+}
+
+.claim-timeline-marker-active {
+  background: rgba(255, 91, 0, 0.15);
+  color: #ff5b00;
+  border-color: #ff5b00;
+}
+
+.claim-timeline-marker-done {
+  background: #22c55e;
+  color: #fff;
+  border-color: #22c55e;
+}
+
+.claim-timeline-connector {
+  flex: 1;
+  height: 2px;
+  background: #333;
+  margin: 0 4px;
+}
+
+.claim-timeline-connector-done {
+  background: #22c55e;
+}
+
+.claim-timeline-label {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+}
+
+.claim-timeline-label-active {
+  color: #fff;
+  font-weight: 700;
+}
+
+.claim-timeline-note {
+  margin-top: 22px;
+  color: #999;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* =========================================
+   WARRANTY STATUS BADGE
+========================================= */
+
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-active {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.status-expired {
+  background: rgba(255, 82, 82, 0.15);
+  color: #ff5252;
 }

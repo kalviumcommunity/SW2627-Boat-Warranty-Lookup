@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import ClaimStatusTimeline from "@/components/ClaimStatusTimeline";
 
 export default function ClaimSubmittedPage() {
   const searchParams = useSearchParams();
@@ -29,7 +30,7 @@ export default function ClaimSubmittedPage() {
         </div>
 
         <div className="success-actions">
-          <Link href="/account" className="primary-btn">
+          <Link href={`/claim-status/${claimId}`} className="primary-btn">
             Track Status
           </Link>
 
@@ -37,6 +38,8 @@ export default function ClaimSubmittedPage() {
             Back to Home
           </Link>
         </div>
+
+        <ClaimStatusTimeline claimId={claimId} />
       </section>
     </main>
   );
