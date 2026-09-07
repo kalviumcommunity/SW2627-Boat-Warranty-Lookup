@@ -5,10 +5,22 @@ const {
   getRepairsByProductId,
 } = require("../controllers/repair.controller");
 
+const {
+  authenticate,
+  authorizeRoles,
+} = require("../middleware/auth.middleware");
+
 const router = express.Router();
 
-router.post("/", createRepair);
+// Admin-only repair creation
+router.post(
+  "/",
+  authenticate,
+  authorizeRoles("admin"),
+  createRepair
+);
 
+// Public repair history lookup
 router.get(
   "/product/:productId",
   getRepairsByProductId

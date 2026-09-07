@@ -9,19 +9,34 @@ const authRoutes = require("./routes/auth.routes");
 
 const app = express();
 
+// Security headers
 app.use(helmet());
-app.use(cors());
+
+// CORS
+app.use(
+  cors({
+    origin:
+      process.env.CLIENT_URL || "http://localhost:5173",
+  })
+);
+
+// JSON body parser
 app.use(express.json());
 
+// API routes
 app.use("/api/v1/health", healthRoutes);
 app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/repairs", repairRoutes);
 app.use("/api/v1/auth", authRoutes);
 
+// Unknown route
 app.use((req, res) => {
-  res.status(404).json({
+  return res.status(404).json({
     success: false,
-    message: "Route not found"
+    error: {
+      code: "NOT_FOUND",
+      message: "Route not found",
+    },
   });
 });
 
