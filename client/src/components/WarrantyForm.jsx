@@ -6,70 +6,109 @@ import { useRouter } from "next/navigation";
 export default function WarrantyForm() {
   const router = useRouter();
 
-  const [serial, setSerial] =
-    useState("");
+  const [serial, setSerial] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const [error, setError] =
-    useState("");
-
-  function handleChange(e) {
+  const handleChange = (e) => {
     const value = e.target.value
       .toUpperCase()
       .replace(/[^A-Z0-9]/g, "")
       .slice(0, 11);
 
     setSerial(value);
-    setError("");
-  }
 
-  function handleSubmit(e) {
+    if (error) {
+      setError("");
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!/^[A-Z0-9]{11}$/.test(serial)) {
+    const cleanSerial = serial.trim().toUpperCase();
+
+    if (!cleanSerial) {
+      setError("Please enter your serial number.");
+      return;
+    }
+
+    if (!/^[A-Z0-9]{11}$/.test(cleanSerial)) {
       setError(
         "Serial number must contain exactly 11 letters and numbers."
       );
       return;
     }
 
+    setError("");
+    setLoading(true);
+
     router.push(
-      `/warranty-result/${serial}`
+      `/warranty-result/${cleanSerial}`
     );
-  }
+  };
 
   return (
     <form
-      className="warranty-form"
+      className="warranty-lookup-form"
       onSubmit={handleSubmit}
     >
 
-      <label>
+      <label htmlFor="serial">
         Serial Number
       </label>
 
-      <input
-        type="text"
-        value={serial}
-        onChange={handleChange}
-        placeholder="BOAT1234ABC"
-        maxLength={11}
-      />
+      <div className="serial-input-wrapper">
+        <span className="serial-search-icon">
+          ⌕
+        </span>
 
-      <p className="character-count">
-        {serial.length}/11
-      </p>
+        <input
+          id="serial"
+          type="text"
+          value={serial}
+          onChange={handleChange}
+          placeholder="Enter 11-character serial number"
+          maxLength={11}
+          autoComplete="off"
+        />
+      </div>
 
       {error && (
-        <p className="error-message">
+        <p className="warranty-form-error">
           {error}
         </p>
       )}
 
       <button
         type="submit"
-        className="button"
+        className="warranty-check-button"
+        disabled={loading}
       >
-        Check Warranty →
+        {loading ? "Checking..." : "Check Warranty"}
+      </button>
+
+      <div className="warranty-or">
+        <span></span>
+        <strong>OR</strong>
+        <span></span>
+      </div>
+
+      <button
+        type="button"
+        className="warranty-scan-button"
+        onClick={() => {
+          alert("Barcode scanner can be connected here.");
+        }}
+      >
+        <span className="scan-icon">
+          ⛶
+        </span>
+
+        <span>
+          <strong>Scan Product Barcode</strong>
+          <small>Use your device camera</small>
+        </span>
       </button>
 
     </form>

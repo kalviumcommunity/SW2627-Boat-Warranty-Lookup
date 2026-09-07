@@ -1,49 +1,43 @@
+"use client";
+
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
-type Props = {
-  searchParams: Promise<{
-    claimId?: string;
-  }>;
-};
+export default function ClaimSubmittedPage() {
+  const searchParams = useSearchParams();
 
-export default async function ClaimSubmittedPage({
-  searchParams
-}: Props) {
-  const params =
-    await searchParams;
+  const claimId =
+    searchParams.get("claimId") || "CLM-PENDING";
 
   return (
-    <section className="page center">
+    <main className="page">
+      <section className="success-page">
+        <div className="success-icon">✓</div>
 
-      <div className="success-icon">
-        ✓
-      </div>
+        <span className="hero-label">CLAIM SUBMITTED</span>
 
-      <h1>
-        Claim Submitted
-      </h1>
+        <h1>Warranty Claim Submitted</h1>
 
-      <p className="muted">
-        Your warranty claim has been
-        successfully submitted.
-      </p>
-
-      {params.claimId && (
         <p>
-          Claim ID:{" "}
-          <strong>
-            {params.claimId}
-          </strong>
+          Your claim has been successfully submitted.
+          Our support team will review it shortly.
         </p>
-      )}
 
-      <Link
-        href="/"
-        className="button"
-      >
-        Go Home
-      </Link>
+        <div className="claim-id-card">
+          <span>Claim ID</span>
+          <strong>{claimId}</strong>
+        </div>
 
-    </section>
+        <div className="success-actions">
+          <Link href="/account" className="primary-btn">
+            Track Status
+          </Link>
+
+          <Link href="/" className="secondary-btn">
+            Back to Home
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }

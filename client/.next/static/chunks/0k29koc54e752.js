@@ -1,1 +1,0 @@
-(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,3139,(t,o,r)=>{o.exports=t.r(96232)},96784,t=>{"use strict";var o=t.i(66497);t.i(10977),t.i(3139),t.s(["default",0,function(){return(0,o.jsx)("form",{})}])}]);

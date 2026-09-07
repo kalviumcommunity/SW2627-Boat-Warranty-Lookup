@@ -1,11 +1,10 @@
-import ProductSearch from "@/components/ProductSearch";
 import ProductList from "@/components/ProductList";
-import Link from "next/link";
-import { Suspense } from "react";
+import ProductSearch from "@/components/ProductSearch";
+import { products } from "@/lib/products";
 
 type Props = {
   searchParams: Promise<{
-    q?: string;
+    search?: string;
     category?: string;
     page?: string;
   }>;
@@ -14,118 +13,69 @@ type Props = {
 export default async function ProductsPage({
   searchParams,
 }: Props) {
-
   const params = await searchParams;
 
-  const query = params.q || "";
-  const category = params.category || "";
-  const page = Number(params.page || "1");
+  const search = params.search?.toLowerCase() || "";
+  const category = params.category?.toLowerCase() || "";
+
+  const page = Math.max(
+    1,
+    Number(params.page || "1")
+  );
+
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch =
+      !search ||
+      product.name.toLowerCase().includes(search);
+
+    const matchesCategory =
+      !category ||
+      product.category.toLowerCase() === category;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  const pageSize = 4;
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts.length / pageSize)
+  );
+
+  const safePage = Math.min(page, totalPages);
+
+  const start = (safePage - 1) * pageSize;
+
+  const paginatedProducts = filteredProducts.slice(
+    start,
+    start + pageSize
+  );
 
   return (
-    <section className="products-page">
+    <main className="page">
+      <section className="container">
+        <div className="page-heading">
+          <span className="hero-label">
+            EXPLORE BOAT
+          </span>
 
-      <div className="products-header">
+          <h1 className="page-title">
+            Our Products
+          </h1>
 
-        <p className="eyebrow">
-          PRODUCTS
-        </p>
-
-        <h1>
-          Find your perfect device.
-        </h1>
-
-        <p>
-          Explore audio, wearables and gaming
-          products designed for everyday life.
-        </p>
-
-      </div>
-
-      <div className="products-layout">
-
-        {/* CATEGORY SIDEBAR */}
-
-        <aside className="products-sidebar">
-
-          <h3>
-            Categories
-          </h3>
-
-          <Link
-            href="/products"
-            className={!category ? "active-category" : ""}
-          >
-            All Products
-          </Link>
-
-          <Link
-            href="/products?category=earbuds"
-            className={category === "earbuds" ? "active-category" : ""}
-          >
-            Wireless Earbuds
-          </Link>
-
-          <Link
-            href="/products?category=headphones"
-            className={category === "headphones" ? "active-category" : ""}
-          >
-            Wireless Headphones
-          </Link>
-
-          <Link
-            href="/products?category=neckband"
-            className={category === "neckband" ? "active-category" : ""}
-          >
-            Neckbands
-          </Link>
-
-          <Link
-            href="/products?category=smartwatch"
-            className={category === "smartwatch" ? "active-category" : ""}
-          >
-            Smart Watches
-          </Link>
-
-          <Link
-            href="/products?category=speaker"
-            className={category === "speaker" ? "active-category" : ""}
-          >
-            Speakers
-          </Link>
-
-          <Link
-            href="/products?category=gaming"
-            className={category === "gaming" ? "active-category" : ""}
-          >
-            Gaming Accessories
-          </Link>
-
-        </aside>
-
-        {/* PRODUCTS */}
-
-        <div className="products-content">
-
-          <ProductSearch />
-
-          <Suspense
-            fallback={
-              <div className="products-loading">
-                Loading products...
-              </div>
-            }
-          >
-            <ProductList
-              query={query}
-              category={category}
-              page={page}
-            />
-          </Suspense>
-
+          <p className="page-subtitle">
+            Find your perfect boAt device.
+          </p>
         </div>
 
-      </div>
+        <ProductSearch initialValue={params.search || ""} />
 
-    </section>
+        <ProductList
+          products={paginatedProducts}
+          currentPage={safePage}
+          totalPages={totalPages}
+        />
+      </section>
+    </main>
   );
 }

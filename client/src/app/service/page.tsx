@@ -1,61 +1,34 @@
-import { headers } from "next/headers";
-
 import ServiceCenterSearch from "@/components/ServiceCenterSearch";
-import ServiceBookingForm from "@/components/ServiceBookingForm";
 
-type Props = {
-  searchParams: Promise<{
-    serial?: string;
-    product?: string;
-  }>;
-};
-
-export default async function ServicePage({
-  searchParams,
-}: Props) {
-  const params = await searchParams;
-
-  const headerList = await headers();
-
-  const userAgent =
-    headerList.get("user-agent") || "";
-
-  const isMobile =
-    /mobile/i.test(userAgent);
-
+export default function ServicePage() {
   return (
-    <section className="page">
+    <main className="page service-page">
 
-      <p className="eyebrow">
-        SERVICE CENTER
-      </p>
+      <section className="container">
 
-      <h1>
-        Find a Service Center
-      </h1>
+        <div className="service-hero">
 
-      <p className="muted">
-        Enter your city to find the nearest
-        service center.
-      </p>
+          <span className="hero-label">
+            SERVICE SUPPORT
+          </span>
 
-      <p className="device-note">
-        {isMobile
-          ? "Mobile support view"
-          : "Desktop support view"}
-      </p>
+          <h1>
+            Find a service center
+            <br />
+            <span>near you.</span>
+          </h1>
 
-      <div className="service-layout">
+          <p>
+            Locate an authorized boAt service center and
+            get your device professionally serviced.
+          </p>
+
+        </div>
 
         <ServiceCenterSearch />
 
-        <ServiceBookingForm
-          serial={params.serial || ""}
-          product={params.product || ""}
-        />
+      </section>
 
-      </div>
-
-    </section>
+    </main>
   );
 }

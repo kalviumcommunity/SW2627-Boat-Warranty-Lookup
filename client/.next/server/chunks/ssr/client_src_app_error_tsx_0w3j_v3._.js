@@ -1,3 +1,0 @@
-module.exports=[23360,a=>{"use strict";var b=a.i(16547);a.s(["default",0,function({reset:a}){return(0,b.jsxs)("div",{className:"page center",children:[(0,b.jsx)("h1",{children:"Something went wrong"}),(0,b.jsx)("p",{className:"muted",children:"Please try again."}),(0,b.jsx)("button",{className:"button",onClick:a,children:"Try Again"})]})}])}];
-
-//# sourceMappingURL=client_src_app_error_tsx_0w3j_v3._.js.map

@@ -1,97 +1,87 @@
-import Link from "next/link";
-
-const helpOptions = [
+const topics = [
   {
     title: "Warranty",
-    description: "Check your product warranty status.",
-    href: "/warranty",
-    number: "01",
+    description:
+      "Check your device warranty status, coverage period and eligibility.",
+    icon: "✓",
   },
   {
     title: "Warranty Claim",
-    description: "Submit a claim for your device.",
-    href: "/warranty-claim",
-    number: "02",
+    description:
+      "Submit a warranty claim and understand the steps involved.",
+    icon: "▤",
   },
   {
-    title: "Service Center",
-    description: "Find an authorized service center.",
-    href: "/service",
-    number: "03",
+    title: "Product Registration",
+    description:
+      "Register your boAt device and keep your product information organized.",
+    icon: "◉",
   },
   {
-    title: "Repair Service",
-    description: "Get your out-of-warranty product repaired.",
-    href: "/repair",
-    number: "04",
+    title: "Repair",
+    description:
+      "Find repair options and get support for devices outside warranty.",
+    icon: "⌁",
   },
   {
-    title: "Extend Warranty",
-    description: "Explore available warranty extension options.",
-    href: "/extend-warranty",
-    number: "05",
+    title: "Replacement",
+    description:
+      "Learn about replacement eligibility and the replacement process.",
+    icon: "↻",
   },
   {
-    title: "Contact Support",
-    description: "Talk to our support team.",
-    href: "/contact",
-    number: "06",
+    title: "Payment",
+    description:
+      "Get help with warranty extensions, repairs and payment-related queries.",
+    icon: "₹",
   },
 ];
 
 export default function HelpPage() {
   return (
-    <section className="help-page">
+    <main className="page help-page">
+      <section className="container">
 
-      <div className="help-header">
+        <div className="page-heading">
+          <span className="hero-label">
+            SUPPORT CENTER
+          </span>
 
-        <p className="eyebrow">
-          HELP TOPICS
-        </p>
+          <h1 className="page-title">
+            How can we help?
+          </h1>
 
-        <h1>
-          How can we help?
-        </h1>
+          <p className="page-subtitle">
+            Find answers, warranty information and support
+            for your boAt device.
+          </p>
+        </div>
 
-        <p>
-          Find quick answers and support for
-          your boAt device.
-        </p>
+        <div className="help-grid">
+          {topics.map((topic) => (
+            <article
+              className="help-card"
+              key={topic.title}
+            >
+              <div className="help-card-icon">
+                {topic.icon}
+              </div>
 
-      </div>
+              <div className="help-card-content">
+                <h2>{topic.title}</h2>
 
-      <div className="help-grid">
+                <p>{topic.description}</p>
 
-        {helpOptions.map((item) => (
-          <Link
-            href={item.href}
-            key={item.number}
-            className="help-card"
-          >
+                <button type="button">
+                  Learn More
+                  <span>→</span>
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
 
-            <span className="help-number">
-              {item.number}
-            </span>
-
-            <div>
-              <h2>
-                {item.title}
-              </h2>
-
-              <p>
-                {item.description}
-              </p>
-            </div>
-
-            <span className="help-arrow">
-              →
-            </span>
-
-          </Link>
-        ))}
-
-      </div>
-
-    </section>
+      </section>
+    </main>
   );
 }

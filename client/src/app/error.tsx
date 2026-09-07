@@ -1,28 +1,33 @@
 "use client";
 
-export default function ErrorPage({
-  reset
+export default function Error({
+  reset,
 }: {
+  error: Error & { digest?: string };
   reset: () => void;
 }) {
   return (
-    <div className="page center">
+    <main className="page">
+      <section className="error-page">
+        <span className="hero-label">
+          SOMETHING WENT WRONG
+        </span>
 
-      <h1>
-        Something went wrong
-      </h1>
+        <h1>We couldn't load this page</h1>
 
-      <p className="muted">
-        Please try again.
-      </p>
+        <p>
+          Something unexpected happened. Please try
+          again.
+        </p>
 
-      <button
-        className="button"
-        onClick={reset}
-      >
-        Try Again
-      </button>
-
-    </div>
+        <button
+          type="button"
+          className="primary-btn"
+          onClick={() => reset()}
+        >
+          Try Again
+        </button>
+      </section>
+    </main>
   );
 }

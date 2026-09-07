@@ -1,91 +1,58 @@
-const products = [
+export type Product = {
+  slug: string;
+  name: string;
+  category: string;
+  image: string;
+  description: string;
+};
+
+export const products: Product[] = [
   {
-    id: "1",
+    slug: "airdopes-141",
     name: "boAt Airdopes 141",
     category: "earbuds",
-    type: "Wireless Earbuds",
     image: "/products/earbuds.jpg",
+    description:
+      "Wireless earbuds designed for everyday listening.",
   },
   {
-    id: "2",
-    name: "boAt Rockerz",
-    category: "neckband",
-    type: "Neckband",
+    slug: "rockerz-255",
+    name: "boAt Rockerz 255",
+    category: "neckbands",
     image: "/products/neckband.jpg",
+    description:
+      "Wireless neckband with powerful sound.",
   },
   {
-    id: "3",
-    name: "boAt Nirvana",
+    slug: "nirvana-751",
+    name: "boAt Nirvana 751",
     category: "headphones",
-    type: "Wireless Headphones",
     image: "/products/headphones.jpg",
+    description:
+      "Wireless headphones with immersive sound.",
   },
   {
-    id: "4",
-    name: "boAt Wave Smartwatch",
-    category: "smartwatch",
-    type: "Smart Watch",
-    image: "/products/smartwatch.jpg",
-  },
-  {
-    id: "5",
+    slug: "stone-speaker",
     name: "boAt Stone Speaker",
-    category: "speaker",
-    type: "Speaker",
+    category: "speakers",
     image: "/products/speaker.jpg",
+    description:
+      "Portable speaker built for powerful audio.",
   },
   {
-    id: "6",
-    name: "boAt Gaming Headset",
+    slug: "wave-smartwatch",
+    name: "boAt Wave Smartwatch",
+    category: "smartwatches",
+    image: "/products/smartwatch.jpg",
+    description:
+      "Smartwatch with fitness and lifestyle features.",
+  },
+  {
+    slug: "immortal-gaming",
+    name: "boAt Immortal Gaming",
     category: "gaming",
-    type: "Gaming Accessories",
     image: "/products/gaming.jpg",
+    description:
+      "Gaming accessories built for immersive gameplay.",
   },
 ];
-
-export async function getProducts({
-  query = "",
-  category = "",
-  page = 1,
-}: {
-  query?: string;
-  category?: string;
-  page?: number;
-}) {
-
-  const filtered = products.filter((product) => {
-
-    const matchesSearch =
-      !query ||
-      product.name.toLowerCase().includes(query.toLowerCase()) ||
-      product.type.toLowerCase().includes(query.toLowerCase());
-
-    const matchesCategory =
-      !category ||
-      product.category === category;
-
-    return matchesSearch && matchesCategory;
-  });
-
-  const pageSize = 6;
-
-  const totalPages =
-    Math.max(1, Math.ceil(filtered.length / pageSize));
-
-  const safePage =
-    Math.min(Math.max(page, 1), totalPages);
-
-  const start =
-    (safePage - 1) * pageSize;
-
-  return {
-    products: filtered.slice(
-      start,
-      start + pageSize
-    ),
-
-    page: safePage,
-
-    totalPages,
-  };
-}

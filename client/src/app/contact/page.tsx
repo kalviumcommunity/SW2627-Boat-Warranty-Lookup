@@ -2,120 +2,152 @@ import Link from "next/link";
 
 const supportOptions = [
   {
-    title: "Email Support",
-    value: "support@boat-lifestyle.com",
-    description: "Send us your questions.",
-    icon: "✉",
-  },
-  {
-    title: "Phone Support",
-    value: "1800-419-0416",
-    description: "Talk to our support team.",
     icon: "☎",
+    title: "Call Support",
+    description:
+      "Speak directly with our customer support team.",
+    action: "Call Us",
+    href: "/contact/call",
   },
   {
+    icon: "✉",
+    title: "Email Support",
+    description:
+      "Send us your query and we'll get back to you.",
+    action: "Send Email",
+    href: "/contact/email",
+  },
+  {
+    icon: "◉",
     title: "Live Chat",
-    value: "Chat with support",
-    description: "Get instant assistance.",
-    icon: "▣",
+    description:
+      "Get quick assistance from our support experts.",
+    action: "Start Chat",
+    href: "/contact/chat",
   },
   {
-    title: "Service Centers",
-    value: "Find a center",
-    description: "Locate nearby support.",
     icon: "⌖",
+    title: "Service Centers",
+    description:
+      "Find an authorized service center near you.",
+    action: "Find Center",
+    href: "/service",
   },
 ];
 
 export default function ContactPage() {
   return (
-    <section className="contact-page">
+    <main className="page contact-page">
+      <section className="container">
 
-      <div className="contact-header">
+        {/* Hero */}
 
-        <p className="eyebrow">
-          GET IN TOUCH
-        </p>
+        <div className="contact-hero">
+          <div>
+            <span className="hero-label">
+              BOAT SUPPORT
+            </span>
 
-        <h1>
-          We're here to help.
-        </h1>
-
-        <p>
-          Have questions about your device?
-          Reach out to us anytime.
-        </p>
-
-      </div>
-
-      <div className="contact-grid">
-
-        {supportOptions.map((item) => (
-          <div
-            className="contact-card"
-            key={item.title}
-          >
-
-            <div className="contact-icon">
-              {item.icon}
-            </div>
-
-            <h2>
-              {item.title}
-            </h2>
-
-            <strong>
-              {item.value}
-            </strong>
+            <h1>
+              We're here to
+              <br />
+              <span>help you.</span>
+            </h1>
 
             <p>
-              {item.description}
+              Whether you need help with your warranty,
+              product, repair or claim, our support team
+              is ready to assist you.
             </p>
-
           </div>
-        ))}
 
-      </div>
+          <div className="contact-hero-badge">
+            <span>24/7</span>
+            <small>Support experience</small>
+          </div>
+        </div>
 
-      <div className="contact-office">
+        {/* Contact options */}
 
-        <div>
+        <div className="contact-section-header">
+          <div>
+            <span className="hero-label">
+              GET IN TOUCH
+            </span>
 
-          <p className="eyebrow">
-            SERVICE & SUPPORT
-          </p>
-
-          <h2>
-            Need help with your device?
-          </h2>
+            <h2>
+              Choose how you'd like to connect
+            </h2>
+          </div>
 
           <p>
-            Check your warranty, submit a claim,
-            or find a nearby service center.
+            Select an option below and we'll help you get
+            your issue resolved.
           </p>
+        </div>
 
-          <div className="contact-actions">
+        <div className="contact-grid premium-contact-grid">
 
-            <Link
-              href="/warranty"
-              className="orange-button"
+          {supportOptions.map((option) => (
+            <div
+              className="premium-contact-card"
+              key={option.title}
             >
-              Check Warranty →
-            </Link>
 
-            <Link
-              href="/service"
-              className="outline-button"
-            >
-              Find Service Center
-            </Link>
+              <div className="contact-icon">
+                {option.icon}
+              </div>
 
-          </div>
+              <h3>
+                {option.title}
+              </h3>
+
+              <p>
+                {option.description}
+              </p>
+
+              <Link
+                href={option.href}
+                className="contact-action"
+              >
+                {option.action}
+                <span>→</span>
+              </Link>
+
+            </div>
+          ))}
 
         </div>
 
-      </div>
+        {/* Warranty support */}
 
-    </section>
+        <div className="contact-bottom">
+
+          <div>
+            <span className="hero-label">
+              WARRANTY SUPPORT
+            </span>
+
+            <h2>
+              Need help with your device warranty?
+            </h2>
+
+            <p>
+              Check your warranty status or submit a claim
+              in just a few steps.
+            </p>
+          </div>
+
+          <Link
+            href="/warranty"
+            className="primary-btn"
+          >
+            Check Warranty →
+          </Link>
+
+        </div>
+
+      </section>
+    </main>
   );
 }

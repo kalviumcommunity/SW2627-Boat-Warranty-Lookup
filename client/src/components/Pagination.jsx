@@ -1,36 +1,45 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 
-function Pagination({
+export default function Pagination({
   currentPage,
-  totalPages
+  totalPages,
 }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  if (totalPages <= 1) {
+    return null;
+  }
+
+  const goToPage = (page) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set("page", String(page));
+
+    router.push(`/products?${params.toString()}`);
+  };
+
   return (
     <div className="pagination">
-
-      {currentPage > 1 && (
-        <Link
-          href={`/products?page=${currentPage - 1}`}
-        >
-          ← Previous
-        </Link>
-      )}
+      <button
+        disabled={currentPage === 1}
+        onClick={() => goToPage(currentPage - 1)}
+      >
+        ← Previous
+      </button>
 
       <span>
         Page {currentPage} of {totalPages}
       </span>
 
-      {currentPage < totalPages && (
-        <Link
-          href={`/products?page=${currentPage + 1}`}
-        >
-          Next →
-        </Link>
-      )}
-
+      <button
+        disabled={currentPage === totalPages}
+        onClick={() => goToPage(currentPage + 1)}
+      >
+        Next →
+      </button>
     </div>
   );
 }
-
-export default Pagination;

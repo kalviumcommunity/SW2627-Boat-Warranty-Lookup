@@ -2,23 +2,23 @@ import ClaimForm from "@/components/ClaimForm";
 
 export default function WarrantyClaimPage() {
   return (
-    <section className="page narrow">
+    <main className="page">
+      <section className="container">
+        <div className="page-heading">
+          <span className="hero-label">WARRANTY SUPPORT</span>
 
-      <p className="eyebrow">
-        WARRANTY CLAIM
-      </p>
+          <h1 className="page-title">
+            Submit a Warranty Claim
+          </h1>
 
-      <h1>
-        Submit Warranty Claim
-      </h1>
+          <p className="page-subtitle">
+            Tell us about your device issue and our support
+            team will help you resolve it.
+          </p>
+        </div>
 
-      <p className="muted">
-        Enter your details and explain
-        the issue with your product.
-      </p>
-
-      <ClaimForm />
-
-    </section>
+        <ClaimForm />
+      </section>
+    </main>
   );
 }

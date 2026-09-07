@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Harshit/SW2627-MERN-Boat-Warranty-Lookup/client/src/app/not-found.tsx"],"sourcesContent":["import Link from \"next/link\";\r\n\r\nexport default function NotFound() {\r\n  return (\r\n    <div className=\"page center\">\r\n\r\n      <h1>\r\n        Page Not Found\r\n      </h1>\r\n\r\n      <p className=\"muted\">\r\n        The page you are looking for\r\n        does not exist.\r\n      </p>\r\n\r\n      <Link\r\n        href=\"/\"\r\n        className=\"button\"\r\n      >\r\n        Go Home\r\n      </Link>\r\n\r\n    </div>\r\n  );\r\n}"],"names":["NotFound","className","href"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,qBACE,wPAAC;QAAIC,WAAU;;0BAEb,wPAAC;0BAAG;;;;;;0BAIJ,wPAAC;gBAAEA,WAAU;0BAAQ;;;;;;0BAKrB,wPAAC,oMAAI;gBACHC,MAAK;gBACLD,WAAU;0BACX;;;;;;;;;;;;AAMP"}}]
-}

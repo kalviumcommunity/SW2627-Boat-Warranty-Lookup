@@ -3,180 +3,151 @@
 import Link from "next/link";
 import { useState } from "react";
 
-function Navbar() {
+export default function Navbar() {
   const [productsOpen, setProductsOpen] = useState(false);
-
-  const categories = [
-    {
-      name: "Wireless Earbuds",
-      value: "earbuds",
-      icon: "◉",
-    },
-    {
-      name: "Wireless Headphones",
-      value: "headphones",
-      icon: "◯",
-    },
-    {
-      name: "Neckbands",
-      value: "neckband",
-      icon: "♧",
-    },
-    {
-      name: "Smart Watches",
-      value: "smartwatch",
-      icon: "◉",
-    },
-    {
-      name: "Speakers",
-      value: "speaker",
-      icon: "◖",
-    },
-    {
-      name: "Gaming Accessories",
-      value: "gaming",
-      icon: "🎮",
-    },
-  ];
 
   return (
     <header className="navbar">
       <div className="navbar-inner">
 
-        {/* LOGO */}
-        <Link href="/" className="navbar-logo">
+        <Link href="/" className="brand-logo">
           boAt
         </Link>
 
-        {/* CENTER NAVIGATION */}
-        <nav className="navbar-center">
+        <nav className="nav-links">
 
-          {/* PRODUCTS */}
           <div
-            className="nav-dropdown-wrapper"
+            className="nav-dropdown"
             onMouseEnter={() => setProductsOpen(true)}
             onMouseLeave={() => setProductsOpen(false)}
           >
             <Link
               href="/products"
-              className="nav-link products-link"
+              className="nav-link"
             >
-              Products <span>⌄</span>
+              Products
+              <span className="nav-arrow">⌄</span>
             </Link>
 
             {productsOpen && (
-              <div
-                className="products-mega-menu"
-                onMouseEnter={() => setProductsOpen(true)}
-                onMouseLeave={() => setProductsOpen(false)}
-              >
+              <div className="products-mega-menu">
 
-                {/* CATEGORY COLUMN */}
-                <div className="mega-column categories-column">
-                  <p className="mega-heading">
+                {/* Categories */}
+
+                <div className="mega-column">
+                  <span className="mega-label">
                     PRODUCT CATEGORIES
-                  </p>
+                  </span>
 
-                  {categories.map((category) => (
-                    <Link
-                      key={category.value}
-                      href={`/products?category=${category.value}`}
-                      className="mega-category"
-                      onClick={() => setProductsOpen(false)}
-                    >
-                      <span className="category-icon">
-                        {category.icon}
-                      </span>
-
-                      {category.name}
-                    </Link>
-                  ))}
-                </div>
-
-                {/* POPULAR PRODUCTS */}
-                <div className="mega-column popular-column">
-                  <p className="mega-heading">
-                    POPULAR PRODUCTS
-                  </p>
-
-                  <Link
-                    href="/products?category=earbuds"
-                    className="popular-product"
-                    onClick={() => setProductsOpen(false)}
-                  >
-                    <img
-                      src="/products/earbuds.jpg"
-                      alt="Wireless Earbuds"
-                    />
-
-                    <div>
-                      <strong>boAt Airdopes 141</strong>
-                      <span>Wireless Earbuds</span>
-                    </div>
+                  <Link href="/products?category=earbuds">
+                    <span className="mega-icon">◉</span>
+                    <span>Wireless Earbuds</span>
                   </Link>
 
-                  <Link
-                    href="/products?category=neckband"
-                    className="popular-product"
-                    onClick={() => setProductsOpen(false)}
-                  >
-                    <img
-                      src="/products/neckband.jpg"
-                      alt="Neckband"
-                    />
-
-                    <div>
-                      <strong>boAt Rockerz</strong>
-                      <span>Neckband</span>
-                    </div>
+                  <Link href="/products?category=headphones">
+                    <span className="mega-icon">◯</span>
+                    <span>Wireless Headphones</span>
                   </Link>
 
-                  <Link
-                    href="/products?category=headphones"
-                    className="popular-product"
-                    onClick={() => setProductsOpen(false)}
-                  >
-                    <img
-                      src="/products/headphones.jpg"
-                      alt="Wireless Headphones"
-                    />
+                  <Link href="/products?category=neckbands">
+                    <span className="mega-icon">◌</span>
+                    <span>Neckbands</span>
+                  </Link>
 
-                    <div>
-                      <strong>boAt Nirvana</strong>
-                      <span>Wireless Headphones</span>
-                    </div>
+                  <Link href="/products?category=smartwatches">
+                    <span className="mega-icon">◉</span>
+                    <span>Smart Watches</span>
+                  </Link>
+
+                  <Link href="/products?category=speakers">
+                    <span className="mega-icon">◉</span>
+                    <span>Speakers</span>
+                  </Link>
+
+                  <Link href="/products?category=gaming">
+                    <span className="mega-icon">◈</span>
+                    <span>Gaming</span>
                   </Link>
 
                   <Link
                     href="/products"
                     className="view-all-products"
-                    onClick={() => setProductsOpen(false)}
                   >
                     View all products →
                   </Link>
                 </div>
 
-                {/* FEATURED PRODUCT */}
-                <div className="mega-featured-product">
+                {/* Popular products */}
 
-                  <div className="featured-image">
+                <div className="mega-column popular-products">
+                  <span className="mega-label">
+                    POPULAR
+                  </span>
+
+                  <Link href="/products/airdopes-141">
                     <img
                       src="/products/earbuds.jpg"
-                      alt="boAt Airdopes"
+                      alt="boAt Airdopes 141"
+                    />
+
+                    <span>
+                      <strong>Airdopes 141</strong>
+                      <small>Wireless Earbuds</small>
+                    </span>
+                  </Link>
+
+                  <Link href="/products/rockerz-255">
+                    <img
+                      src="/products/neckband.jpg"
+                      alt="boAt Rockerz 255"
+                    />
+
+                    <span>
+                      <strong>Rockerz 255</strong>
+                      <small>Neckband</small>
+                    </span>
+                  </Link>
+
+                  <Link href="/products/nirvana-751">
+                    <img
+                      src="/products/headphones.jpg"
+                      alt="boAt Nirvana 751"
+                    />
+
+                    <span>
+                      <strong>Nirvana 751</strong>
+                      <small>Headphones</small>
+                    </span>
+                  </Link>
+                </div>
+
+                {/* Featured */}
+
+                <div className="mega-feature">
+
+                  <div className="mega-feature-image">
+                    <img
+                      src="/products/earbuds.jpg"
+                      alt="boAt Airdopes 141"
                     />
                   </div>
 
-                  <h3>boAt Airdopes 141</h3>
+                  <span className="mega-feature-tag">
+                    FEATURED
+                  </span>
+
+                  <h3>
+                    boAt Airdopes 141
+                  </h3>
 
                   <p>
-                    True wireless earbuds with
-                    powerful sound.
+                    Powerful wireless earbuds designed
+                    for everyday listening.
                   </p>
 
                   <Link
-                    href="/products?category=earbuds"
-                    className="orange-button"
-                    onClick={() => setProductsOpen(false)}
+                    href="/products/airdopes-141"
+                    className="mega-feature-button"
                   >
                     View Details →
                   </Link>
@@ -187,7 +158,6 @@ function Navbar() {
             )}
           </div>
 
-          {/* YOUR DEVICE */}
           <Link
             href="/warranty"
             className="nav-link"
@@ -195,7 +165,6 @@ function Navbar() {
             Your Device
           </Link>
 
-          {/* HELP */}
           <Link
             href="/help"
             className="nav-link"
@@ -205,17 +174,26 @@ function Navbar() {
 
         </nav>
 
-        {/* RIGHT SIDE */}
-        <Link
-          href="/contact"
-          className="connect-button"
-        >
-          Connect with us
-        </Link>
+        <div className="navbar-actions">
+
+          <Link
+            href="/login"
+            className="nav-icon"
+            aria-label="Account"
+          >
+            ◯
+          </Link>
+
+          <Link
+            href="/contact"
+            className="connect-btn"
+          >
+            Connect with us
+          </Link>
+
+        </div>
 
       </div>
     </header>
   );
 }
-
-export default Navbar;

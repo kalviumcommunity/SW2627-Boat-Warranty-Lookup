@@ -1,29 +1,26 @@
 import type { Metadata } from "next";
+import "./globals.css";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-import "./globals.css";
-
 export const metadata: Metadata = {
-  title: "boAt Warranty",
+  title: "boAt Warranty Lookup",
   description:
-    "Check your boAt product warranty and get support."
+    "Check your boAt device warranty, submit claims and get support.",
 };
 
 export default function RootLayout({
-  children
-}: {
+  children,
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
       <body>
         <Navbar />
 
-        <main>
-          {children}
-        </main>
+        {children}
 
         <Footer />
       </body>

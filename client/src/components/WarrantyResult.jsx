@@ -1,76 +1,104 @@
-function WarrantyResult({ result }) {
+"use client";
+
+import Link from "next/link";
+
+export default function WarrantyResult({ result }) {
   if (!result) {
     return null;
   }
 
-  if (!result.success) {
-    return (
-      <div className="warranty-result error">
-        <h3>Warranty information not found</h3>
-        <p>{result.message}</p>
-      </div>
-    );
-  }
+  const product = result.data || result.product || result;
 
-  const product = result.data;
+  const isActive =
+    product.warrantyStatus?.toLowerCase() === "active";
+
+  const formatDate = (date) => {
+    if (!date) return "Not available";
+
+    return new Date(date).toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
 
   return (
     <div className="warranty-result">
       <div className="result-header">
         <div>
-          <p className="section-label">YOUR DEVICE</p>
-          <h3>{product.productName}</h3>
+          <span className="hero-label">WARRANTY STATUS</span>
+
+          <h2>{product.productName || "boAt Device"}</h2>
+
+          <p>
+            Serial Number:{" "}
+            <strong>{product.serialNumber || "N/A"}</strong>
+          </p>
         </div>
 
         <span
-          className={
-            product.warrantyStatus === "Active"
-              ? "status active"
-              : "status expired"
-          }
+          className={`status-badge ${
+            isActive ? "status-active" : "status-expired"
+          }`}
         >
-          {product.warrantyStatus}
+          {product.warrantyStatus || "Unknown"}
         </span>
       </div>
 
       <div className="result-grid">
-        <div>
-          <span>Serial Number</span>
-          <strong>{product.serialNumber}</strong>
+        <div className="result-item">
+          <span>Product Model</span>
+          <strong>{product.model || "N/A"}</strong>
         </div>
 
-        <div>
-          <span>Model</span>
-          <strong>{product.model}</strong>
-        </div>
-
-        <div>
+        <div className="result-item">
           <span>Purchase Date</span>
-          <strong>
-            {new Date(product.purchaseDate).toLocaleDateString()}
-          </strong>
+          <strong>{formatDate(product.purchaseDate)}</strong>
         </div>
 
-        <div>
-          <span>Warranty Expiry</span>
-          <strong>
-            {new Date(product.warrantyExpiry).toLocaleDateString()}
-          </strong>
+        <div className="result-item">
+          <span>Warranty Valid Till</span>
+          <strong>{formatDate(product.warrantyExpiry)}</strong>
+        </div>
+
+        <div className="result-item">
+          <span>Warranty Type</span>
+          <strong>Standard Warranty</strong>
         </div>
       </div>
 
-      {product.warrantyPdf && (
-        <a
-          href={product.warrantyPdf}
-          target="_blank"
-          rel="noreferrer"
-          className="pdf-button"
-        >
-          View Warranty PDF
-        </a>
-      )}
+      <div className="warranty-actions">
+        {isActive ? (
+          <>
+            <Link href="/warranty-claim" className="action-card">
+              <strong>Warranty Claim</strong>
+              <span>Submit a claim →</span>
+            </Link>
+
+            <Link href="/extend-warranty" className="action-card">
+              <strong>Extend Warranty</strong>
+              <span>Extend coverage →</span>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link href="/extend-warranty" className="action-card">
+              <strong>Extend Warranty</strong>
+              <span>Continue protection →</span>
+            </Link>
+
+            <Link href="/repair" className="action-card">
+              <strong>Repair Device</strong>
+              <span>Book repair →</span>
+            </Link>
+          </>
+        )}
+
+        <Link href="/contact" className="action-card">
+          <strong>Contact Us</strong>
+          <span>Get support →</span>
+        </Link>
+      </div>
     </div>
   );
 }
-
-export default WarrantyResult;

@@ -1,68 +1,35 @@
-import Link from "next/link";
-import { getProducts } from "@/lib/products";
+import ProductCard from "./ProductCard";
+import Pagination from "./Pagination";
 
-export default async function ProductList({
-  query = "",
-  category = "",
-  page = 1,
+export default function ProductList({
+  products,
+  currentPage,
+  totalPages,
 }) {
-  const result = await getProducts({
-    query,
-    category,
-    page,
-  });
+  if (!products.length) {
+    return (
+      <div className="empty-state">
+        <h2>No products found</h2>
+        <p>Try another search.</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="product-list">
-
+    <>
       <div className="products-grid">
-
-        {result.products.map((product) => (
-          <article
-            key={product.id}
-            className="product-card"
-          >
-
-            <div className="product-image-box">
-              <img
-                src={product.image}
-                alt={product.name}
-              />
-            </div>
-
-            <div className="product-card-content">
-
-              <p className="product-type">
-                {product.type}
-              </p>
-
-              <h2>
-                {product.name}
-              </h2>
-
-              <Link
-                href={`/products?category=${product.category}`}
-              >
-                View Details →
-              </Link>
-
-            </div>
-
-          </article>
+        {products.map((product) => (
+          <ProductCard
+            key={product.slug}
+            product={product}
+          />
         ))}
-
       </div>
 
-      {result.products.length === 0 && (
-        <div className="empty-products">
-          <h2>No products found</h2>
-
-          <p>
-            Try another category or search term.
-          </p>
-        </div>
-      )}
-
-    </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
+    </>
   );
 }

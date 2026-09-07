@@ -1,74 +1,29 @@
-import Link from "next/link";
+import ServiceBookingForm from "@/components/ServiceBookingForm";
 
-type Props = {
-  searchParams: Promise<{
-    serial?: string;
-    product?: string;
-  }>;
-};
-
-export default async function RepairPage({
-  searchParams,
-}: Props) {
-  const params =
-    await searchParams;
-
+export default function RepairPage() {
   return (
-    <section className="page">
+    <main className="page repair-page">
+      <section className="container">
 
-      <p className="eyebrow">
-        REPAIR
-      </p>
-
-      <h1>
-        Repair Service
-      </h1>
-
-      <p className="muted">
-        Your product can be repaired
-        through our service.
-      </p>
-
-      <div className="repair-card">
-
-        <p>
-          Estimated Repair Cost
-        </p>
-
-        <h2>
-          ₹699
-        </h2>
-
-        <div>
-          <span>
-            Product
+        <div className="page-heading">
+          <span className="hero-label">
+            OUT OF WARRANTY
           </span>
 
-          <strong>
-            {params.product ||
-              "Your Product"}
-          </strong>
+          <h1 className="page-title">
+            Repair Your Device
+          </h1>
+
+          <p className="page-subtitle">
+            Tell us what's wrong with your device. We'll
+            analyze the issue and provide an estimated
+            repair cost and service time.
+          </p>
         </div>
 
-        <div>
-          <span>
-            Estimated Time
-          </span>
+        <ServiceBookingForm />
 
-          <strong>
-            5–7 Working Days
-          </strong>
-        </div>
-
-        <Link
-          href={`/service?serial=${params.serial || ""}`}
-          className="button"
-        >
-          Book Repair →
-        </Link>
-
-      </div>
-
-    </section>
+      </section>
+    </main>
   );
 }

@@ -2,165 +2,148 @@
 
 import { useState } from "react";
 
-const centers = {
-  delhi: [
-    {
-      name: "boAt Service Center - Connaught Place",
-      city: "New Delhi",
-      distance: "3.2 km",
-    },
-    {
-      name: "boAt Service Center - Karol Bagh",
-      city: "New Delhi",
-      distance: "5.7 km",
-    },
-    {
-      name: "boAt Service Center - Dwarka",
-      city: "New Delhi",
-      distance: "12.4 km",
-    },
-  ],
-
-  gurugram: [
-    {
-      name: "boAt Service Center - Gurugram",
-      city: "Gurugram",
-      distance: "2.5 km",
-    },
-  ],
-
-  noida: [
-    {
-      name: "boAt Service Center - Noida",
-      city: "Noida",
-      distance: "4.1 km",
-    },
-  ],
-};
-
 export default function ServiceCenterSearch() {
-  const [city, setCity] =
-    useState("");
+  const [city, setCity] = useState("");
+  const [searched, setSearched] = useState(false);
 
-  const [results, setResults] =
-    useState([]);
+  const handleSearch = (e) => {
+    e.preventDefault();
 
-  function searchCenters() {
-    const key =
-      city.trim().toLowerCase();
+    if (!city.trim()) return;
 
-    setResults(
-      centers[key] || []
-    );
-  }
+    setSearched(true);
+  };
 
   return (
-    <div className="service-search">
+    <div className="service-search-section">
 
-      <div className="search-box">
+      <div className="service-search-card">
 
-        <h2>
-          Find Service Center
-        </h2>
+        <div className="service-search-icon">
+          ⌖
+        </div>
 
-        <p>
-          Enter your city to find
-          the nearest service centers.
-        </p>
+        <div className="service-search-content">
 
-        <div className="search-row">
+          <span className="hero-label">
+            LOCATE SUPPORT
+          </span>
 
-          <input
-            type="text"
-            value={city}
-            onChange={(e) =>
-              setCity(e.target.value)
-            }
-            placeholder="Enter your city"
-          />
+          <h2>
+            Find an authorized service center
+          </h2>
 
-          <button
-            onClick={searchCenters}
-            className="button"
+          <p>
+            Enter your city or location to find available
+            service support near you.
+          </p>
+
+          <form
+            className="service-search-form"
+            onSubmit={handleSearch}
           >
-            Search
-          </button>
+
+            <input
+              type="text"
+              value={city}
+              onChange={(e) =>
+                setCity(e.target.value)
+              }
+              placeholder="Enter city or pincode"
+            />
+
+            <button
+              type="submit"
+              className="primary-btn"
+            >
+              Find Center →
+            </button>
+
+          </form>
 
         </div>
 
-        {results.length === 0 &&
-          city && (
-            <div className="nearby-cities">
+      </div>
 
-              <p>
-                No service center in
-                your city?
-              </p>
+      {searched && (
+        <div className="service-result">
 
-              <p>
-                Try these nearby cities:
-              </p>
+          <div className="service-result-header">
 
-              <button
-                onClick={() => {
-                  setCity("Delhi");
-                  setResults(
-                    centers.delhi
-                  );
-                }}
-              >
-                Delhi
-              </button>
+            <div>
+              <span className="hero-label">
+                AVAILABLE SUPPORT
+              </span>
 
-              <button
-                onClick={() => {
-                  setCity("Gurugram");
-                  setResults(
-                    centers.gurugram
-                  );
-                }}
-              >
-                Gurugram
-              </button>
+              <h2>
+                Service centers near {city}
+              </h2>
+            </div>
 
-              <button
-                onClick={() => {
-                  setCity("Noida");
-                  setResults(
-                    centers.noida
-                  );
-                }}
-              >
-                Noida
+            <span className="service-count">
+              3 Centers
+            </span>
+
+          </div>
+
+          <div className="service-center-list">
+
+            <div className="service-center-card">
+
+              <div className="center-number">
+                01
+              </div>
+
+              <div>
+                <h3>
+                  boAt Authorized Service Center
+                </h3>
+
+                <p>
+                  Main Market, {city}
+                </p>
+
+                <span>
+                  Mon–Sat · 10:00 AM – 7:00 PM
+                </span>
+              </div>
+
+              <button type="button">
+                Directions →
               </button>
 
             </div>
-          )}
 
-      </div>
+            <div className="service-center-card">
 
-      <div className="service-results">
+              <div className="center-number">
+                02
+              </div>
 
-        {results.map((center) => (
-          <div
-            key={center.name}
-            className="service-card"
-          >
-            <h3>
-              {center.name}
-            </h3>
+              <div>
+                <h3>
+                  boAt Care Center
+                </h3>
 
-            <p>
-              {center.city}
-            </p>
+                <p>
+                  City Center, {city}
+                </p>
 
-            <strong>
-              {center.distance}
-            </strong>
+                <span>
+                  Mon–Sat · 10:00 AM – 7:00 PM
+                </span>
+              </div>
+
+              <button type="button">
+                Directions →
+              </button>
+
+            </div>
+
           </div>
-        ))}
 
-      </div>
+        </div>
+      )}
 
     </div>
   );

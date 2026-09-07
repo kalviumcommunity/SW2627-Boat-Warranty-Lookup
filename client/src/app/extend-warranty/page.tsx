@@ -1,73 +1,83 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
-export default async function ExtendWarrantyPage() {
+const plans = [
+  {
+    duration: "3 Months",
+    price: 399,
+  },
+  {
+    duration: "6 Months",
+    price: 699,
+  },
+  {
+    duration: "12 Months",
+    price: 1199,
+  },
+];
+
+export default function ExtendWarrantyPage() {
+  const [selectedPlan, setSelectedPlan] = useState(0);
+
   return (
-    <section className="page">
+    <main className="page">
+      <section className="container">
+        <div className="page-heading">
+          <span className="hero-label">
+            EXTENDED PROTECTION
+          </span>
 
-      <p className="eyebrow">
-        WARRANTY
-      </p>
+          <h1 className="page-title">
+            Extend Your Warranty
+          </h1>
 
-      <h1>
-        Extend Warranty
-      </h1>
+          <p className="page-subtitle">
+            Choose a protection plan that works best for you.
+          </p>
+        </div>
 
-      <p className="muted">
-        Select a plan to extend your warranty.
-      </p>
+        <div className="plans-grid">
+          {plans.map((plan, index) => (
+            <button
+              key={plan.duration}
+              type="button"
+              className={`plan-card ${
+                selectedPlan === index
+                  ? "plan-selected"
+                  : ""
+              }`}
+              onClick={() => setSelectedPlan(index)}
+            >
+              <span>{plan.duration}</span>
 
-      <div className="plans">
+              <strong>₹{plan.price}</strong>
 
-        <div className="plan-card">
-          <h2>3 Months</h2>
-          <h3>₹399</h3>
+              <small>
+                Extended warranty coverage
+              </small>
+            </button>
+          ))}
+        </div>
+
+        <div className="payment-section">
+          <h2>
+            Selected: {plans[selectedPlan].duration}
+          </h2>
 
           <p>
-            3 months additional coverage
+            Total amount: ₹{plans[selectedPlan].price}
           </p>
 
           <Link
-            href="/warranty-claim?type=extension&plan=3"
-            className="button"
+            href="/contact"
+            className="primary-btn"
           >
-            Select Plan
+            Proceed to Payment
           </Link>
         </div>
-
-        <div className="plan-card">
-          <h2>6 Months</h2>
-          <h3>₹699</h3>
-
-          <p>
-            6 months additional coverage
-          </p>
-
-          <Link
-            href="/warranty-claim?type=extension&plan=6"
-            className="button"
-          >
-            Select Plan
-          </Link>
-        </div>
-
-        <div className="plan-card">
-          <h2>12 Months</h2>
-          <h3>₹1,199</h3>
-
-          <p>
-            12 months additional coverage
-          </p>
-
-          <Link
-            href="/warranty-claim?type=extension&plan=12"
-            className="button"
-          >
-            Select Plan
-          </Link>
-        </div>
-
-      </div>
-
-    </section>
+      </section>
+    </main>
   );
 }

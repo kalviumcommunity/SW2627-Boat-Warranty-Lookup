@@ -1,36 +1,33 @@
 "use client";
 
-import { useState } from "react";
+export default function FileUpload({ onFileSelect }) {
+  const handleChange = (e) => {
+    const file = e.target.files?.[0];
 
-function FileUpload() {
-  const [file, setFile] =
-    useState(null);
+    if (!file) return;
 
-  function handleChange(event) {
-    const selectedFile =
-      event.target.files?.[0];
+    const allowedTypes = [
+      "image/jpeg",
+      "image/png",
+      "application/pdf",
+    ];
 
-    if (!selectedFile) {
+    if (!allowedTypes.includes(file.type)) {
+      alert("Please upload a JPG, PNG or PDF file.");
       return;
     }
 
-    if (selectedFile.size > 5 * 1024 * 1024) {
-      alert(
-        "File size must be less than 5 MB."
-      );
-
+    if (file.size > 5 * 1024 * 1024) {
+      alert("File size must be less than 5MB.");
       return;
     }
 
-    setFile(selectedFile);
-  }
+    onFileSelect(file);
+  };
 
   return (
-    <div className="file-upload">
-
-      <label>
-        Upload Invoice
-      </label>
+    <div className="form-group">
+      <label>Purchase Invoice</label>
 
       <input
         type="file"
@@ -38,14 +35,9 @@ function FileUpload() {
         onChange={handleChange}
       />
 
-      {file && (
-        <p className="muted">
-          Selected: {file.name}
-        </p>
-      )}
-
+      <small>
+        Optional · JPG, PNG or PDF · Maximum 5MB
+      </small>
     </div>
   );
 }
-
-export default FileUpload;

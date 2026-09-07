@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Harshit/SW2627-MERN-Boat-Warranty-Lookup/client/src/app/error.tsx"],"sourcesContent":["\"use client\";\r\n\r\nexport default function ErrorPage({\r\n  reset\r\n}: {\r\n  reset: () => void;\r\n}) {\r\n  return (\r\n    <div className=\"page center\">\r\n\r\n      <h1>\r\n        Something went wrong\r\n      </h1>\r\n\r\n      <p className=\"muted\">\r\n        Please try again.\r\n      </p>\r\n\r\n      <button\r\n        className=\"button\"\r\n        onClick={reset}\r\n      >\r\n        Try Again\r\n      </button>\r\n\r\n    </div>\r\n  );\r\n}"],"names":["ErrorPage","reset","className","onClick"],"mappings":";;;;;AAAA;;AAEe,SAASA,UAAU,EAChCC,KAAK,EAGN;IACC,qBACE,uMAAC;QAAIC,WAAU;;0BAEb,uMAAC;0BAAG;;;;;;0BAIJ,uMAAC;gBAAEA,WAAU;0BAAQ;;;;;;0BAIrB,uMAAC;gBACCA,WAAU;gBACVC,SAASF;0BACV;;;;;;;;;;;;AAMP;KAzBwBD"}}]
-}

@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Harshit/SW2627-MERN-Boat-Warranty-Lookup/client/src/app/loading.tsx"],"sourcesContent":["export default function Loading() {\r\n  return (\r\n    <div className=\"page center\">\r\n\r\n      <p>\r\n        Loading...\r\n      </p>\r\n\r\n    </div>\r\n  );\r\n}"],"names":["Loading","className"],"mappings":";;;;;;AAAe,SAASA;IACtB,qBACE,wPAAC;QAAIC,WAAU;kBAEb,cAAA,wPAAC;sBAAE;;;;;;;;;;;AAMT"}}]
-}

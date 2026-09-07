@@ -2,24 +2,26 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="page center">
+    <main className="page">
+      <section className="error-page">
+        <span className="hero-label">
+          404
+        </span>
 
-      <h1>
-        Page Not Found
-      </h1>
+        <h1>Page Not Found</h1>
 
-      <p className="muted">
-        The page you are looking for
-        does not exist.
-      </p>
+        <p>
+          Sorry, we couldn't find the page you're looking
+          for.
+        </p>
 
-      <Link
-        href="/"
-        className="button"
-      >
-        Go Home
-      </Link>
-
-    </div>
+        <Link
+          href="/"
+          className="primary-btn"
+        >
+          Back to Home
+        </Link>
+      </section>
+    </main>
   );
 }

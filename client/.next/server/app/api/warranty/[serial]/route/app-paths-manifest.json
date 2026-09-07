@@ -1,3 +1,0 @@
-{
-  "/api/warranty/[serial]/route": "app/api/warranty/[serial]/route.js"
-}

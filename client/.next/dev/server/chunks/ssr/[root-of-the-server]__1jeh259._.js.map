@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Harshit/SW2627-MERN-Boat-Warranty-Lookup/client/src/app/warranty-claim/page.tsx"],"sourcesContent":["import ClaimForm from \"@/components/ClaimForm\";\r\n\r\nexport default function WarrantyClaimPage() {\r\n  return (\r\n    <section className=\"page narrow\">\r\n\r\n      <p className=\"eyebrow\">\r\n        WARRANTY CLAIM\r\n      </p>\r\n\r\n      <h1>\r\n        Submit Warranty Claim\r\n      </h1>\r\n\r\n      <p className=\"muted\">\r\n        Enter your details and explain\r\n        the issue with your product.\r\n      </p>\r\n\r\n      <ClaimForm />\r\n\r\n    </section>\r\n  );\r\n}"],"names":["WarrantyClaimPage","className"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,qBACE,wPAAC;QAAQC,WAAU;;0BAEjB,wPAAC;gBAAEA,WAAU;0BAAU;;;;;;0BAIvB,wPAAC;0BAAG;;;;;;0BAIJ,wPAAC;gBAAEA,WAAU;0BAAQ;;;;;;0BAKrB,wPAAC,oJAAS;;;;;;;;;;;AAIhB"}},
-    {"offset": {"line": 64, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}}]
-}
