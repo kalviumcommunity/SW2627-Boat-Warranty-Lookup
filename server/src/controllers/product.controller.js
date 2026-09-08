@@ -1,5 +1,7 @@
 const prisma = require("../config/prisma");
-const { createProductSchema } = require("../validators/product.validator");
+const {
+  createProductSchema,
+} = require("../validators/product.validator");
 
 // Create a new product
 const createProduct = async (req, res) => {
@@ -28,7 +30,7 @@ const createProduct = async (req, res) => {
         model: data.model,
         purchaseDate: data.purchaseDate,
         warrantyExpiry: data.warrantyExpiry,
-        warrantyPdf: data.warrantyPdf,
+        warrantyPdf: data.warrantyPdf || null,
       },
     });
 
@@ -49,7 +51,10 @@ const createProduct = async (req, res) => {
       });
     }
 
-    console.error("Create product error:", error);
+    req.log.error(
+      { err: error },
+      "Create product failed"
+    );
 
     return res.status(500).json({
       success: false,
@@ -64,7 +69,9 @@ const createProduct = async (req, res) => {
 // Get product by serial number
 const getProductBySerialNumber = async (req, res) => {
   try {
-    const serialNumber = String(req.params.serialNumber || "").trim();
+    const serialNumber = String(
+      req.params.serialNumber || ""
+    ).trim();
 
     if (!serialNumber) {
       return res.status(400).json({
@@ -77,10 +84,16 @@ const getProductBySerialNumber = async (req, res) => {
     }
 
     // Pagination values
-    const page = Math.max(Number(req.query.page) || 1, 1);
+    const page = Math.max(
+      Number(req.query.page) || 1,
+      1
+    );
 
     const pageSize = Math.min(
-      Math.max(Number(req.query.pageSize) || 10, 1),
+      Math.max(
+        Number(req.query.pageSize) || 10,
+        1
+      ),
       100
     );
 
@@ -101,46 +114,57 @@ const getProductBySerialNumber = async (req, res) => {
       });
     }
 
-    // Fetch repair history
-    const [repairs, totalRepairs] = await Promise.all([
-      prisma.repair.findMany({
-        where: {
-          productId: product.id,
-        },
-        orderBy: {
-          repairDate: "desc",
-        },
-        skip: (page - 1) * pageSize,
-        take: pageSize,
-      }),
+    // Fetch repair history in parallel
+    const [repairs, totalRepairs] =
+      await Promise.all([
+        prisma.repair.findMany({
+          where: {
+            productId: product.id,
+          },
+          orderBy: {
+            repairDate: "desc",
+          },
+          skip: (page - 1) * pageSize,
+          take: pageSize,
+        }),
 
-      prisma.repair.count({
-        where: {
-          productId: product.id,
-        },
-      }),
-    ]);
+        prisma.repair.count({
+          where: {
+            productId: product.id,
+          },
+        }),
+      ]);
 
     // Warranty calculation
     const warrantyActive =
-      new Date(product.warrantyExpiry) >= new Date();
+      new Date(product.warrantyExpiry) >=
+      new Date();
 
     const totalPages =
       totalRepairs === 0
         ? 0
-        : Math.ceil(totalRepairs / pageSize);
+        : Math.ceil(
+            totalRepairs / pageSize
+          );
 
     return res.status(200).json({
       success: true,
       data: {
         id: product.id,
-        serialNumber: product.serialNumber,
-        productName: product.productName,
+        serialNumber:
+          product.serialNumber,
+        productName:
+          product.productName,
         model: product.model,
-        purchaseDate: product.purchaseDate,
-        warrantyExpiry: product.warrantyExpiry,
-        warrantyStatus: warrantyActive ? "Active" : "Expired",
-        warrantyPdf: product.warrantyPdf,
+        purchaseDate:
+          product.purchaseDate,
+        warrantyExpiry:
+          product.warrantyExpiry,
+        warrantyStatus: warrantyActive
+          ? "Active"
+          : "Expired",
+        warrantyPdf:
+          product.warrantyPdf,
 
         repairs,
 
@@ -153,7 +177,10 @@ const getProductBySerialNumber = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("Warranty lookup error:", error);
+    req.log.error(
+      { err: error },
+      "Warranty lookup failed"
+    );
 
     return res.status(500).json({
       success: false,

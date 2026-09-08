@@ -12,7 +12,7 @@ const {
 
 const router = express.Router();
 
-// Admin only
+// Admin only: create product
 router.post(
   "/",
   authenticate,
@@ -20,7 +20,7 @@ router.post(
   createProduct
 );
 
-// Public warranty lookup
+// Public: warranty lookup
 router.get(
   "/:serialNumber",
   getProductBySerialNumber

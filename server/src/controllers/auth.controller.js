@@ -86,7 +86,9 @@ const register = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("Register error:", error);
+    req.log.error(
+    { err: error },
+    "Register failed");
 
     return res.status(500).json({
       success: false,
@@ -162,7 +164,7 @@ const login = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("Login error:", error);
+    req.log.error({ err: error },"Get current user failed");
 
     return res.status(500).json({
       success: false,
@@ -204,7 +206,7 @@ const getMe = async (req, res) => {
       data: user,
     });
   } catch (error) {
-    console.error("Get me error:", error);
+    req.log.error({ err: error },"Login failed");
 
     return res.status(500).json({
       success: false,

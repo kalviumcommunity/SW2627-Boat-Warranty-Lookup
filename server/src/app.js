@@ -1,6 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const pinoHttp = require("pino-http");
+
+const logger = require("./config/logger");
 
 const healthRoutes = require("./routes/health.routes");
 const productRoutes = require("./routes/product.routes");
@@ -16,7 +19,16 @@ app.use(helmet());
 app.use(
   cors({
     origin:
-      process.env.CLIENT_URL || "http://localhost:5173",
+      process.env.CLIENT_URL ||
+      "http://localhost:5173",
+    credentials: true,
+  })
+);
+
+// HTTP request logging
+app.use(
+  pinoHttp({
+    logger,
   })
 );
 
@@ -24,10 +36,25 @@ app.use(
 app.use(express.json());
 
 // API routes
-app.use("/api/v1/health", healthRoutes);
-app.use("/api/v1/products", productRoutes);
-app.use("/api/v1/repairs", repairRoutes);
-app.use("/api/v1/auth", authRoutes);
+app.use(
+  "/api/v1/health",
+  healthRoutes
+);
+
+app.use(
+  "/api/v1/products",
+  productRoutes
+);
+
+app.use(
+  "/api/v1/repairs",
+  repairRoutes
+);
+
+app.use(
+  "/api/v1/auth",
+  authRoutes
+);
 
 // Unknown route
 app.use((req, res) => {
