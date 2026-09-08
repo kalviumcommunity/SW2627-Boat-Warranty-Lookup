@@ -1,6 +1,9 @@
 const prisma = require("../config/prisma");
-const { createRepairSchema } = require("../validators/repair.validator");
+const {
+  createRepairSchema,
+} = require("../validators/repair.validator");
 
+// Create a new repair
 const createRepair = async (req, res) => {
   try {
     const result = createRepairSchema.safeParse(req.body);
@@ -51,7 +54,10 @@ const createRepair = async (req, res) => {
       data: repair,
     });
   } catch (error) {
-    console.error("Create repair error:", error);
+    req.log.error(
+      { err: error },
+      "Create repair failed"
+    );
 
     return res.status(500).json({
       success: false,
@@ -63,11 +69,17 @@ const createRepair = async (req, res) => {
   }
 };
 
+// Get repairs by product ID
 const getRepairsByProductId = async (req, res) => {
   try {
-    const productId = Number(req.params.productId);
+    const productId = Number(
+      req.params.productId
+    );
 
-    if (!Number.isInteger(productId) || productId <= 0) {
+    if (
+      !Number.isInteger(productId) ||
+      productId <= 0
+    ) {
       return res.status(400).json({
         success: false,
         error: {
@@ -83,7 +95,10 @@ const getRepairsByProductId = async (req, res) => {
     );
 
     const pageSize = Math.min(
-      Math.max(Number(req.query.pageSize) || 10, 1),
+      Math.max(
+        Number(req.query.pageSize) || 10,
+        1
+      ),
       100
     );
 
@@ -140,12 +155,17 @@ const getRepairsByProductId = async (req, res) => {
           totalPages:
             total === 0
               ? 0
-              : Math.ceil(total / pageSize),
+              : Math.ceil(
+                  total / pageSize
+                ),
         },
       },
     });
   } catch (error) {
-    console.error("Get repairs error:", error);
+    req.log.error(
+      { err: error },
+      "Get repairs failed"
+    );
 
     return res.status(500).json({
       success: false,
