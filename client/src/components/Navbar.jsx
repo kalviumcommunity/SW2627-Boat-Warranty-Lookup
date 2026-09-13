@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Navbar() {
   const [productsOpen, setProductsOpen] = useState(false);
+  const auth = useAuth();
+  const user = auth?.user;
 
   return (
     <header className="navbar">
@@ -177,11 +180,12 @@ export default function Navbar() {
         <div className="navbar-actions">
 
           <Link
-            href="/login"
+            href={user ? "/account" : "/login"}
             className="nav-icon"
-            aria-label="Account"
+            aria-label={user ? `Account (${user.name})` : "Account"}
+            title={user ? `${user.name} (${user.role})` : "Sign In"}
           >
-            ◯
+            {user ? (user.name ? user.name.charAt(0).toUpperCase() : "👤") : "◯"}
           </Link>
 
           <Link

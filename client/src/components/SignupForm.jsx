@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 export default function SignupForm() {
   const router = useRouter();
+  const auth = useAuth();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -36,20 +38,8 @@ export default function SignupForm() {
       return;
     }
 
-    if (!formData.mobile && !formData.email) {
-      setError(
-        "Enter either your mobile number or registered email."
-      );
-      return;
-    }
-
-    if (
-      formData.mobile &&
-      !/^[0-9]{10}$/.test(formData.mobile)
-    ) {
-      setError(
-        "Mobile number must contain exactly 10 digits."
-      );
+    if (!formData.email) {
+      setError("Please enter your registered email address.");
       return;
     }
 
@@ -76,24 +66,24 @@ export default function SignupForm() {
     try {
       setLoading(true);
 
-      /*
-       * Keep your existing signup API here if you already
-       * have one connected to Piyush's backend.
-       *
-       * Example:
-       *
-       * const response = await fetch("/api/auth/signup", {
-       *   method: "POST",
-       *   headers: {
-       *     "Content-Type": "application/json",
-       *   },
-       *   body: JSON.stringify(formData),
-       * });
-       */
+      if (auth?.register) {
+        await auth.register(
+          formData.name.trim(),
+          formData.email.trim(),
+          formData.password
+        );
+      } else {
+        throw new Error("Registration service is unavailable.");
+      }
 
       router.push("/account");
+      router.refresh();
     } catch (err) {
-      setError("Unable to create account. Please try again.");
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Unable to create account. Please try again."
+      );
     } finally {
       setLoading(false);
     }

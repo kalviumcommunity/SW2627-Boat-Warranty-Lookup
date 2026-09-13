@@ -3,12 +3,9 @@ export type WarrantyProduct = {
   productName: string;
   model: string;
   image: string;
-
   purchaseDate: string;
   warrantyExpiry: string;
-
   warrantyStatus: "Active" | "Expired";
-
   warrantyType: string;
   daysLeft: number;
 };
@@ -16,108 +13,99 @@ export type WarrantyProduct = {
 export async function getWarranty(
   serial: string
 ): Promise<WarrantyProduct | null> {
+  const cleanSerial = serial.trim().toUpperCase();
 
   const backendUrl =
-    process.env.BACKEND_URL;
+    process.env.BACKEND_URL || "http://127.0.0.1:5000";
 
-  if (backendUrl) {
-    try {
-      const response = await fetch(
-        `${backendUrl}/api/products/${serial}`,
-        {
-          cache: "no-store",
-        }
-      );
+  const url =
+    `${backendUrl}/api/v1/products/` +
+    `${encodeURIComponent(cleanSerial)}`;
 
-      if (response.ok) {
-        const data =
-          await response.json();
+  console.log("Warranty API URL:", url);
 
-        const product =
-          data.product ||
-          data.data;
+  try {
+    const response = await fetch(url, {
+      cache: "no-store",
+    });
 
-        if (product) {
-          return {
-            serial:
-              product.serialNumber ||
-              product.serial ||
-              serial,
+    const data = await response.json().catch(() => null);
 
-            productName:
-              product.productName ||
-              product.name ||
-              "boAt Product",
+    console.log(
+      "Warranty API status:",
+      response.status
+    );
 
-            model:
-              product.model ||
-              "Not Available",
+    console.log(
+      "Warranty API response:",
+      data
+    );
 
-            image:
-              product.image ||
-              "/products/earbuds.jpg",
-
-            purchaseDate:
-              product.purchaseDate ||
-              "Not Available",
-
-            warrantyExpiry:
-              product.warrantyExpiry ||
-              product.warrantyTill ||
-              "Not Available",
-
-            warrantyStatus:
-              product.warrantyStatus ||
-              "Active",
-
-            warrantyType:
-              product.warrantyType ||
-              "Standard Warranty",
-
-            daysLeft:
-              Number(product.daysLeft) || 0,
-          };
-        }
-      }
-    } catch (error) {
-      console.log(
-        "Backend is not available."
-      );
+    if (!response.ok) {
+      return null;
     }
-  }
 
-  // Demo data for frontend testing
-  if (
-    process.env.DEMO_MODE === "true" &&
-    serial === "BOAT1234ABC"
-  ) {
+    const product = data?.data;
+
+    if (!product) {
+      return null;
+    }
+
+    const expiryDate = product.warrantyExpiry
+      ? new Date(product.warrantyExpiry)
+      : null;
+
+    const now = new Date();
+
+    const daysLeft = expiryDate
+      ? Math.max(
+          0,
+          Math.ceil(
+            (expiryDate.getTime() -
+              now.getTime()) /
+              (1000 * 60 * 60 * 24)
+          )
+        )
+      : 0;
+
     return {
-      serial: "BOAT1234ABC",
+      serial:
+        product.serialNumber || cleanSerial,
 
       productName:
-        "boAt Airdopes 141",
+        product.productName || "boAt Product",
 
       model:
-        "Airdopes 141",
+        product.model || "Not Available",
 
       image:
+        product.image ||
         "/products/earbuds.jpg",
 
       purchaseDate:
-        "15 Jan 2024",
+        product.purchaseDate || "Not Available",
 
       warrantyExpiry:
-        "15 Jan 2026",
+        product.warrantyExpiry || "Not Available",
 
       warrantyStatus:
-        "Active",
+        product.warrantyStatus ||
+        (expiryDate && expiryDate >= now
+          ? "Active"
+          : "Expired"),
 
       warrantyType:
+        product.warrantyType ||
         "Standard Warranty",
 
-      daysLeft: 245,
+      daysLeft,
     };
-  }
+  } catch (error) {
+    console.error(
+      "Warranty lookup failed:",
+      error
+    );
 
-  return null;
+    return null;
+  }
 }
