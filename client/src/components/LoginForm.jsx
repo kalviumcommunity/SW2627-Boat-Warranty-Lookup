@@ -52,7 +52,7 @@ export default function LoginForm() {
 
     try {
       if (auth?.login) {
-        await auth.login(Email, password);
+        await auth.login(email, password);
       } else {
         throw new Error("Authentication service is unavailable.");
       }
