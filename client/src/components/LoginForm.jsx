@@ -10,7 +10,7 @@ export default function LoginForm() {
   const auth = useAuth();
 
   const [formData, setFormData] = useState({
-    identifier: "",
+    email: "",
     password: "",
   });
 
@@ -52,7 +52,7 @@ export default function LoginForm() {
 
     try {
       if (auth?.login) {
-        await auth.login(identifier, password);
+        await auth.login(Email, password);
       } else {
         throw new Error("Authentication service is unavailable.");
       }
