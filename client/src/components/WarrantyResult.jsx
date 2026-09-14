@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import WarrantyCountdown from "./WarrantyCountdown";
+import Pagination from "./Pagination";
 
 export default function WarrantyResult({ result }) {
   if (!result) {
@@ -72,6 +73,36 @@ export default function WarrantyResult({ result }) {
         purchaseDate={product.purchaseDate}
         expiryDate={product.warrantyExpiry}
       />
+
+      {Array.isArray(product.repairs) && product.repairs.length > 0 && (
+        <div className="repairs-section" style={{ marginTop: "2rem" }}>
+          <h3 style={{ marginBottom: "1rem" }}>Repair History</h3>
+          <div className="repairs-list" style={{ display: "grid", gap: "1rem" }}>
+            {product.repairs.map((repair) => (
+              <div key={repair.id} className="result-item" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div>
+                  <strong>{repair.issue}</strong>
+                  {repair.description && <p style={{ fontSize: "0.875rem", opacity: 0.8 }}>{repair.description}</p>}
+                  <small style={{ display: "block", marginTop: "0.25rem" }}>Date: {formatDate(repair.repairDate)}</small>
+                </div>
+                <div style={{ textAlign: "right" }}>
+                  <span className="status-badge status-active">{repair.status}</span>
+                  <small style={{ display: "block", marginTop: "0.25rem" }}>Cost: ₹{repair.cost}</small>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {product.pagination && product.pagination.totalPages > 1 && (
+            <div style={{ marginTop: "1.5rem" }}>
+              <Pagination
+                currentPage={product.pagination.page}
+                totalPages={product.pagination.totalPages}
+              />
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="warranty-actions">
         {isActive ? (

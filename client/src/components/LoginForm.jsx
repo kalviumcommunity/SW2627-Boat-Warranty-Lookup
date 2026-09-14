@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 export default function LoginForm() {
   const router = useRouter();
+  const auth = useAuth();
 
   const [formData, setFormData] = useState({
-    identifier: "",
+    email: "",
     password: "",
   });
 
@@ -49,31 +51,10 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          identifier,
-          password,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          data?.message || "Invalid mobile number/email or password."
-        );
-      }
-
-      /*
-       * Keep the session returned by your existing API.
-       * If your API already sets a cookie, this is enough.
-       */
-      if (data?.token) {
-        localStorage.setItem("authToken", data.token);
+      if (auth?.login) {
+        await auth.login(email, password);
+      } else {
+        throw new Error("Authentication service is unavailable.");
       }
 
       router.push("/account");

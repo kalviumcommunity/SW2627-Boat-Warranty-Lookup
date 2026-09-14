@@ -1,6 +1,43 @@
+"use client";
+
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 export default function AccountPage() {
+  const auth = useAuth() as any;
+  const user = auth?.user;
+  const loading = auth?.loading;
+  const logout = auth?.logout;
+
+  if (loading) {
+    return (
+      <main className="page account-page">
+        <section className="container">
+          <p>Loading user profile...</p>
+        </section>
+      </main>
+    );
+  }
+
+  if (!user) {
+    return (
+      <main className="page account-page">
+        <section className="container">
+          <div className="account-header">
+            <div>
+              <span className="hero-label">MY ACCOUNT</span>
+              <h1>Sign In Required</h1>
+              <p>Please sign in to view your profile and manage your account.</p>
+            </div>
+            <Link href="/login" className="primary-btn">
+              Sign In →
+            </Link>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <main className="page account-page">
 
@@ -39,7 +76,7 @@ export default function AccountPage() {
           <div className="account-card">
 
             <div className="profile-avatar">
-              H
+              {user.name ? user.name.charAt(0).toUpperCase() : "U"}
             </div>
 
             <div>
@@ -51,27 +88,28 @@ export default function AccountPage() {
 
               <div>
                 <small>Name</small>
-                <strong>Harshit</strong>
+                <strong>{user.name}</strong>
               </div>
 
               <div>
                 <small>Email</small>
-                <strong>Registered Email</strong>
+                <strong>{user.email}</strong>
               </div>
 
               <div>
-                <small>Mobile</small>
-                <strong>Registered Mobile</strong>
+                <small>Role</small>
+                <strong style={{ textTransform: "capitalize" }}>{user.role}</strong>
               </div>
 
             </div>
 
-            <Link
-              href="/login"
+            <button
+              onClick={() => logout && logout()}
               className="secondary-btn"
+              style={{ marginTop: "1rem", cursor: "pointer" }}
             >
-              Switch Account
-            </Link>
+              Sign Out
+            </button>
 
           </div>
 

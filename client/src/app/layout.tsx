@@ -3,6 +3,7 @@ import "./globals.css";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AuthProviderWrapper from "@/components/AuthProviderWrapper";
 
 export const metadata: Metadata = {
   title: "boAt Warranty Lookup",
@@ -18,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
+        <AuthProviderWrapper>
+          <Navbar />
 
-        {children}
+          {children}
 
-        <Footer />
+          <Footer />
+        </AuthProviderWrapper>
       </body>
     </html>
   );

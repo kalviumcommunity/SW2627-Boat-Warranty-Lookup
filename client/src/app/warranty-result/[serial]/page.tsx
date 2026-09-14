@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import WarrantyResult from "@/components/WarrantyResult";
+import { getWarranty } from "@/lib/warranty";
 
 type Props = {
   params: Promise<{
@@ -8,64 +9,70 @@ type Props = {
   }>;
 };
 
-export default async function WarrantyResultPage({ params }: Props) {
+export default async function WarrantyResultPage({
+  params,
+}: Props) {
   const { serial } = await params;
 
-  if (!/^[A-Z0-9]{11}$/i.test(serial)) {
+  const cleanSerial = serial
+    .trim()
+    .toUpperCase();
+
+  if (!/^[A-Z0-9]{11}$/.test(cleanSerial)) {
     notFound();
   }
 
-  const apiUrl =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const result = await getWarranty(cleanSerial);
 
-  let result = null;
-  let errorMessage = "";
+  if (result.status === "NOT_FOUND") {
+    notFound();
+  }
 
-  try {
-    const response = await fetch(
-      `${apiUrl}/api/products/${serial.toUpperCase()}`,
-      {
-        cache: "no-store",
-      }
+  if (result.status === "ERROR") {
+    return (
+      <main className="page">
+        <section className="result-page">
+          <Link
+            href="/warranty"
+            className="back-link"
+          >
+            ← Check another serial number
+          </Link>
+
+          <div className="error-state">
+            <h1>Something went wrong</h1>
+
+            <p>
+              Unable to connect to the warranty
+              service.
+            </p>
+
+            <Link
+              href={`/warranty-result/${encodeURIComponent(
+                cleanSerial
+              )}`}
+            >
+              Try Again
+            </Link>
+          </div>
+        </section>
+      </main>
     );
-
-    if (!response.ok) {
-      if (response.status === 404) {
-        notFound();
-      }
-
-      throw new Error("Warranty lookup failed");
-    }
-
-    result = await response.json();
-  } catch (error) {
-    if (error instanceof Error && error.message === "NEXT_NOT_FOUND") {
-      throw error;
-    }
-
-    errorMessage = "Unable to connect to the warranty service.";
   }
 
   return (
     <main className="page">
       <section className="result-page">
-        <Link href="/warranty" className="back-link">
+        <Link
+          href="/warranty"
+          className="back-link"
+        >
           ← Check another serial number
         </Link>
 
-        {errorMessage ? (
-          <div className="error-card">
-            <h1>Something went wrong</h1>
-
-            <p>{errorMessage}</p>
-
-            <Link href="/warranty" className="primary-btn">
-              Try Again
-            </Link>
-          </div>
-        ) : (
-          <WarrantyResult result={result} />
-        )}
+        <WarrantyResult
+          result={result.data}
+        />
       </section>
     </main>
   );
