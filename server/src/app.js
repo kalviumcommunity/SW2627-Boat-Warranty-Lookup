@@ -9,6 +9,7 @@ const healthRoutes = require("./routes/health.routes");
 const productRoutes = require("./routes/product.routes");
 const repairRoutes = require("./routes/repair.routes");
 const authRoutes = require("./routes/auth.routes");
+const feedbackRoutes = require("./routes/feedback.routes");
 
 const app = express();
 
@@ -54,6 +55,11 @@ app.use(
 app.use(
   "/api/v1/auth",
   authRoutes
+);
+
+app.use(
+  "/api/v1/feedback",
+  feedbackRoutes
 );
 
 // Unknown route
