@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
+import FeedbackForm from "@/components/FeedbackForm";
 
 export default function AccountPage() {
   const auth = useAuth() as any;
@@ -147,6 +148,8 @@ export default function AccountPage() {
           </div>
 
         </div>
+
+        <FeedbackForm />
 
       </section>
 

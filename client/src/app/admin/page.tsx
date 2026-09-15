@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import Link from "next/link";
+import AdminFeedback from "@/components/AdminFeedback";
 
 export default async function AdminPage() {
   const cookieStore = await cookies();
@@ -56,6 +57,9 @@ export default async function AdminPage() {
             <strong>16</strong>
           </div>
         </div>
+
+        
+        <AdminFeedback />
       </section>
     </main>
   );
