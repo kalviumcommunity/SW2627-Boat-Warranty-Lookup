@@ -35,11 +35,11 @@ export default function LoginForm() {
 
     setError("");
 
-    const identifier = formData.identifier.trim();
+    const email = formData.email.trim();
     const password = formData.password;
 
-    if (!identifier) {
-      setError("Please enter your mobile number or email.");
+    if (!email) {
+      setError("Please enter your email.");
       return;
     }
 
@@ -54,7 +54,9 @@ export default function LoginForm() {
       if (auth?.login) {
         await auth.login(email, password);
       } else {
-        throw new Error("Authentication service is unavailable.");
+        throw new Error(
+          "Authentication service is unavailable."
+        );
       }
 
       router.push("/account");
@@ -75,7 +77,6 @@ export default function LoginForm() {
       className="professional-login-form"
       onSubmit={handleSubmit}
     >
-
       {/* LOGIN METHOD */}
       <div className="login-method-tabs">
         <button
@@ -83,14 +84,16 @@ export default function LoginForm() {
           className="login-method active"
         >
           <span>✉</span>
-          Mobile Number or Email
+          Email Login
         </button>
 
         <button
           type="button"
           className="login-method"
           onClick={() => {
-            setError("OTP login will be available soon.");
+            setError(
+              "OTP login will be available soon."
+            );
           }}
         >
           <span>▣</span>
@@ -98,10 +101,10 @@ export default function LoginForm() {
         </button>
       </div>
 
-      {/* IDENTIFIER */}
+      {/* EMAIL */}
       <div className="login-field">
-        <label htmlFor="identifier">
-          Mobile Number or Email
+        <label htmlFor="email">
+          Email
         </label>
 
         <div className="login-input-wrapper">
@@ -110,12 +113,12 @@ export default function LoginForm() {
           </span>
 
           <input
-            id="identifier"
-            name="identifier"
-            type="text"
-            value={formData.identifier}
+            id="email"
+            name="email"
+            type="email"
+            value={formData.email}
             onChange={handleChange}
-            placeholder="9876543210 or you@example.com"
+            placeholder="you@example.com"
             autoComplete="username"
           />
         </div>
@@ -135,7 +138,11 @@ export default function LoginForm() {
           <input
             id="password"
             name="password"
-            type={showPassword ? "text" : "password"}
+            type={
+              showPassword
+                ? "text"
+                : "password"
+            }
             value={formData.password}
             onChange={handleChange}
             placeholder="Enter password"
@@ -145,7 +152,11 @@ export default function LoginForm() {
           <button
             type="button"
             className="password-toggle"
-            onClick={() => setShowPassword((prev) => !prev)}
+            onClick={() =>
+              setShowPassword(
+                (prev) => !prev
+              )
+            }
             aria-label={
               showPassword
                 ? "Hide password"
@@ -159,13 +170,14 @@ export default function LoginForm() {
 
       {/* OPTIONS */}
       <div className="login-options">
-
         <label className="remember-option">
           <input
             type="checkbox"
             checked={rememberMe}
             onChange={(e) =>
-              setRememberMe(e.target.checked)
+              setRememberMe(
+                e.target.checked
+              )
             }
           />
 
@@ -181,12 +193,13 @@ export default function LoginForm() {
           className="forgot-password"
           onClick={(e) => {
             e.preventDefault();
-            setError("Password recovery will be available soon.");
+            setError(
+              "Password recovery will be available soon."
+            );
           }}
         >
           Forgot Password?
         </Link>
-
       </div>
 
       {/* ERROR */}
@@ -202,7 +215,9 @@ export default function LoginForm() {
         className="login-submit"
         disabled={loading}
       >
-        {loading ? "Signing In..." : "Sign In"}
+        {loading
+          ? "Signing In..."
+          : "Sign In"}
 
         {!loading && (
           <span>→</span>
@@ -221,10 +236,14 @@ export default function LoginForm() {
         type="button"
         className="google-login"
         onClick={() =>
-          setError("Google sign in will be available soon.")
+          setError(
+            "Google sign in will be available soon."
+          )
         }
       >
-        <span className="google-icon">G</span>
+        <span className="google-icon">
+          G
+        </span>
         Sign in with Google
       </button>
 
@@ -236,7 +255,6 @@ export default function LoginForm() {
           Create Account
         </Link>
       </p>
-
     </form>
   );
 }
