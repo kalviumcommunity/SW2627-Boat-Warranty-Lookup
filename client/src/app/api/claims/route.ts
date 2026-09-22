@@ -5,9 +5,12 @@ export async function POST(
     const body =
       await request.json();
 
+    const serial = body.serial || body.serialNumber;
+    const name = body.name || body.fullName;
+
     if (
-      !body.serial ||
-      !body.name ||
+      !serial ||
+      !name ||
       !body.email ||
       !body.phone ||
       !body.issueType
